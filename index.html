@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing Rô Modas — Presença Digital 30 Dias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-body: #FAF7F4;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F4EBE3;
+      --primary: #8E5646;
+      --primary-hover: #734234;
+      --primary-soft: #F9EFEA;
+      --text-main: #2A2420;
+      --text-muted: #6E645D;
+      --border: #E5DDD5;
+      --radius: 14px;
+      --shadow: 0 4px 20px rgba(42, 36, 32, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      padding-bottom: 120px;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Progress Bar */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: rgba(250, 247, 244, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0 8px 0;
+    }
+
+    .top-bar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
+    .brand-tag {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+
+    .brand-tag span {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+    }
+
+    .progress-text {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .progress-container {
+      height: 4px;
+      background: #EAE3DC;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #B88E5A, #8E5646);
+      transition: width 0.3s ease;
+    }
+
+    /* Header */
+    .header-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 35px 30px;
+      margin-top: 25px;
+      margin-bottom: 25px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #8E5646, #D49C8D);
+    }
+
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.15;
+    }
+
+    .header-subtitle {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    .header-intro {
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: var(--bg-subtle);
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card-titles h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .card-titles span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      font-size: 0.93rem;
+    }
+
+    .form-help {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      background-color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(142, 86, 70, 0.12);
+    }
+
+    .form-textarea {
+      min-height: 85px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    /* Checkbox list */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .checkbox-label:hover {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      accent-color: var(--primary);
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Bottom Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 14px 20px;
+      z-index: 100;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+    }
+
+    .bottom-bar-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .bottom-info {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .bottom-info .saved-tag {
+      color: #2E7D32;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-submit {
+      background: var(--primary);
+      color: #FFF;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(142, 86, 70, 0.25);
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Success Overlay Card */
+    .success-screen {
+      display: none;
+      background: #FFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 50px 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-top: 40px;
+    }
+
+    .success-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px auto;
+    }
+
+    .success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .success-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 25px auto;
+      line-height: 1.6;
+    }
+
+    .success-badge {
+      display: inline-block;
+      background: var(--bg-subtle);
+      color: var(--primary);
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: #2A2420;
+      color: #FFF;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      opacity: 0;
+      transition: all 0.25s ease;
+      z-index: 300;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-content">
+        <div class="brand-tag">Rô Modas <span style="font-family:'Caveat',cursive;">♡</span></div>
+        <div class="progress-text" id="progressText">0% preenchido</div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Tela de Sucesso (Exibida após envio) -->
+    <div id="successScreen" class="success-screen">
+      <div class="success-icon">✨</div>
+      <h2 class="success-title">Muito obrigado, Rô!</h2>
+      <p class="success-desc">
+        Suas respostas foram gravadas com sucesso no sistema do projeto! 
+        O Lucas já recebeu todas as suas informações e começará o planejamento da nova marca e loja virtual.
+      </p>
+      <div class="success-badge">✅ Respostas registradas · Presença Digital 30 Dias</div>
+    </div>
+
+    <!-- Formulário Principal -->
+    <div id="formContainer">
+
+      <header class="header-box">
+        <h1 class="header-title">Rô Modas <span style="font-family:'Caveat',cursive; color:var(--primary);">♡</span></h1>
+        <div class="header-subtitle">Briefing do Projeto · Do Planejamento ao Lançamento em 30 Dias</div>
+        
+        <div class="header-intro">
+          <p><strong>Olá, Rô!</strong> Este questionário reúne tudo o que precisamos para construir sua nova marca, loja virtual, presença no Google e redes sociais.</p>
+          <p style="margin-top:6px; font-size:0.85rem; color:var(--text-muted);">
+            💡 <em>Responda do seu jeito e com calma. Suas respostas são salvas automaticamente enquanto você digita. Ao final, basta clicar no botão "Enviar Briefing".</em>
+          </p>
+        </div>
+      </header>
+
+      <form id="briefingForm">
+
+        <!-- BLOCO 1 -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-badge">1</div>
+            <div class="card-titles">
+              <span>Etapa 1 · Diagnóstico e Planejamento</span>
+              <h2>O Coração do Negócio & Objetivos</h2>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q1_historia">1. Como e quando nasceu a Rô Modas? O que te motivou a começar?</label>
+            <span class="form-help">Conte um pouco da sua história e o que mais te dá orgulho no que você faz hoje.</span>
+            <textarea class="form-textarea" id="q1_historia" placeholder="Ex: Comecei revendendo roupas, abri a loja com o sonho de..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q2_diferencial">2. Por que as clientes compram na Rô Modas e não na concorrência?</label>
+            <span class="form-help">Qual é o seu maior diferencial? (Ex: atendimento humanizado, consultoria de looks, caimento das peças, novidades toda semana, etc.)</span>
+            <textarea class="form-textarea" id="q2_diferencial" placeholder="Ex: O carinho e a atenção no atendimento, o cafezinho, peças bem escolhidas..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q3_mix">3. Mix de Produtos (Feminino · Masculino · Infantil):</label>
+            <span class="form-help">Qual categoria vende mais hoje e qual você quer priorizar no site e nas redes?</span>
+            <textarea class="form-textarea" id="q3_mix" placeholder="Ex: Feminino é 70% das vendas. Quero destacar vestidos e peças elegantes, além da linha infantil..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q4_precos">4. Qual é a faixa de preço das peças e o valor médio por compra?</label>
+            <input type="text" class="form-input" id="q4_precos" placeholder="Ex: Roupas de R$ 49 a R$ 280. Em média cada cliente gasta R$ 150.">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">5. O que será um sucesso absoluto ao final deste projeto?</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="objetivo" value="Vender online para todo o Brasil"> Vender online p/ todo o Brasil</label>
+              <label class="checkbox-label"><input type="checkbox" name="objetivo" value="Atrair mais clientes para a loja física"> Atrair clientes p/ loja física</label>
+              <label class="checkbox-label"><input type="checkbox" name="objetivo" value="Marca mais forte e sofisticada"> Marca mais forte & elegante</label>
+              <label class="checkbox-label"><input type="checkbox" name="objetivo" value="Agilizar vendas pelo WhatsApp"> Agilizar pedidos no WhatsApp</label>
+              <label class="checkbox-label"><input type="checkbox" name="objetivo" value="Fortalecer o Instagram"> Fortalecer o Instagram</label>
+              <label class="checkbox-label"><input type="checkbox" name="objetivo" value="Ser destaque no Google local"> Ser achada no Google da cidade</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q5_concorrentes">6. Concorrentes diretos e marcas de inspiração:</label>
+            <span class="form-help">Cite 2 a 3 concorrentes da sua cidade/região e 2 marcas de moda que você admira muito.</span>
+            <textarea class="form-textarea" id="q5_concorrentes" placeholder="Ex: Admiro muito o estilo da loja @exemplo; na minha cidade concorremos com..."></textarea>
+          </div>
+        </section>
+
+        <!-- BLOCO 2 -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-badge">2</div>
+            <div class="card-titles">
+              <span>Etapa 2 · Identidade Visual & Posicionamento</span>
+              <h2>Estilo, Cores & Nova Identidade Visual</h2>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q6_logo_atual">1. O que você mais gosta e o que menos gosta na logo atual?</label>
+            <span class="form-help">Há algum elemento que você faz questão de manter (ex: coração, traço manuscrito) ou podemos inovar 100%?</span>
+            <textarea class="form-textarea" id="q6_logo_atual" placeholder="Ex: Gosto da ideia do coração, mas sinto que a escrita pode ser mais limpa e moderna..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">2. Se a Rô Modas fosse uma pessoa, quais qualidades ela teria?</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="personalidade" value="Elegante e Sofisticada"> Elegante & Sofisticada</label>
+              <label class="checkbox-label"><input type="checkbox" name="personalidade" value="Moderna e Conectada"> Moderna & Conectada</label>
+              <label class="checkbox-label"><input type="checkbox" name="personalidade" value="Acolhedora e Carinhosa"> Acolhedora & Carinhosa</label>
+              <label class="checkbox-label"><input type="checkbox" name="personalidade" value="Acessível e Popular"> Acessível & Popular</label>
+              <label class="checkbox-label"><input type="checkbox" name="personalidade" value="Alegre e Vibrante"> Alegre & Vibrante</label>
+              <label class="checkbox-label"><input type="checkbox" name="personalidade" value="Minimalista e Chique"> Minimalista & Chique</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q7_cores">3. Preferência de cores:</label>
+            <span class="form-help">Quais cores você ama para a loja? Existe alguma cor que você NÃO QUER de jeito nenhum?</span>
+            <textarea class="form-textarea" id="q7_cores" placeholder="Ex: Amo tons terrosos, rosê, nude, dourado. Não gosto de verde limão ou roxo..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">4. Onde a nova marca será usada?</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="aplicacoes" value="Sacolas da loja"> Sacolas da loja</label>
+              <label class="checkbox-label"><input type="checkbox" name="aplicacoes" value="Etiquetas de roupas (tags)"> Etiquetas de roupas (tags)</label>
+              <label class="checkbox-label"><input type="checkbox" name="aplicacoes" value="Fitas e adesivos de embalagem"> Fitas e adesivos</label>
+              <label class="checkbox-label"><input type="checkbox" name="aplicacoes" value="Fachada / Placa da loja"> Fachada / Placa da loja</label>
+              <label class="checkbox-label"><input type="checkbox" name="aplicacoes" value="Cartões de mimo / agradecimento"> Cartão de mimo / agradecimento</label>
+              <label class="checkbox-label"><input type="checkbox" name="aplicacoes" value="Camisas da equipe"> Camisetas da equipe</label>
+              <label class="checkbox-label"><input type="checkbox" name="aplicacoes" value="Redes Sociais & WhatsApp"> Redes Sociais & WhatsApp</label>
+            </div>
+          </div>
+        </section>
+
+        <!-- BLOCO 3 -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-badge">3</div>
+            <div class="card-titles">
+              <span>Etapas 3 e 4 · Loja Virtual & SEO</span>
+              <h2>E-commerce, Catálogo & Formas de Envio</h2>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q8_categorias">1. Categorias do Menu da Loja Online:</label>
+            <textarea class="form-textarea" id="q8_categorias" placeholder="Exemplo:
+• Feminino: Vestidos, Conjuntos, Blusas, Calças/Jeans
+• Masculino: Bermudas, Camisetas básicas, Polos
+• Infantil: Menina, Menino
+• Promoções / Novidades"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q9_produtos">2. Produtos do Lançamento & Fotos:</label>
+            <span class="form-help">Quantas peças você quer colocar no ar no primeiro lote? As fotos já estão prontas?</span>
+            <textarea class="form-textarea" id="q9_produtos" placeholder="Ex: Cerca de 30 a 50 peças. Já temos fotos e vamos produzir mais..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">3. Formas de Pagamento no Site:</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="pagamentos" value="Pix com desconto"> Pix com 5% de desconto</label>
+              <label class="checkbox-label"><input type="checkbox" name="pagamentos" value="Cartão até 3x sem juros"> Cartão até 3x sem juros</label>
+              <label class="checkbox-label"><input type="checkbox" name="pagamentos" value="Cartão até 6x ou 12x"> Cartão até 6x ou 12x</label>
+              <label class="checkbox-label"><input type="checkbox" name="pagamentos" value="Boleto bancário"> Boleto bancário</label>
+            </div>
+            <input type="text" style="margin-top: 8px;" class="form-input" id="q10_gateway" placeholder="Já usa algum intermediador? (Ex: PagBank, Mercado Pago, Yampi, etc.)">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">4. Formas de Envio & Entregas:</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="envios" value="Retirada grátis na loja física"> Retirada na loja física (Grátis)</label>
+              <label class="checkbox-label"><input type="checkbox" name="envios" value="Motoboy na cidade"> Entrega de Motoboy na cidade</label>
+              <label class="checkbox-label"><input type="checkbox" name="envios" value="Correios (SEDEX / PAC)"> Correios (SEDEX / PAC)</label>
+              <label class="checkbox-label"><input type="checkbox" name="envios" value="Transportadoras / Melhor Envio"> Transportadoras / Melhor Envio</label>
+              <label class="checkbox-label"><input type="checkbox" name="envios" value="Frete Grátis com valor mínimo"> Frete grátis acima de valor X</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q11_trocas">5. Regras de Troca e Devolução:</label>
+            <textarea class="form-textarea" id="q11_trocas" placeholder="Ex: Trocas em até 7 dias após o recebimento, peça sem uso e com tag..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q12_seo">6. Como seus clientes devem encontrar a Rô Modas no Google?</label>
+            <input type="text" class="form-input" id="q12_seo" placeholder="Ex: 'loja de roupas feminina em [cidade]', 'moda evangélica chic', etc.">
+          </div>
+        </section>
+
+        <!-- BLOCO 4 -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-badge">4</div>
+            <div class="card-titles">
+              <span>Etapa 5 · Presença Local</span>
+              <h2>Google Meu Negócio & Loja Física</h2>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q13_loja_dados">1. Dados Oficiais da Loja Física para o Google Maps:</label>
+            <textarea class="form-textarea" id="q13_loja_dados" placeholder="• Endereço completo:
+• Horário de funcionamento (Seg a Sex / Sáb):
+• Telefone e WhatsApp de atendimento:
+• Há estacionamento próximo?"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">2. Comodidades que a loja física oferece:</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="comodidades" value="Provadores confortáveis"> Provadores confortáveis</label>
+              <label class="checkbox-label"><input type="checkbox" name="comodidades" value="Ambiente climatizado"> Ambiente climatizado</label>
+              <label class="checkbox-label"><input type="checkbox" name="comodidades" value="Café / Água cortesia"> Cafezinho / Água cortesia</label>
+              <label class="checkbox-label"><input type="checkbox" name="comodidades" value="Malinha / Condicional em casa"> Malinha / Condicional em casa</label>
+              <label class="checkbox-label"><input type="checkbox" name="comodidades" value="Acessibilidade"> Acessibilidade</label>
+            </div>
+          </div>
+        </section>
+
+        <!-- BLOCO 5 -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-badge">5</div>
+            <div class="card-titles">
+              <span>Etapa 6 · Redes Sociais & Conteúdo</span>
+              <h2>Instagram, Vídeos & Voz da Marca</h2>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q15_estilo_posts">1. Presença em Vídeo e Stories:</label>
+            <span class="form-help">Você gosta de gravar provador e aparecer falando com as clientes, ou prefere fotos estéticas de looks e peças?</span>
+            <textarea class="form-textarea" id="q15_estilo_posts" placeholder="Ex: Gosto de mostrar os looks vestindo no corpo, mas às vezes falta tempo na rotina..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">2. Destaques que você quer ter na capa do Instagram:</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="destaques" value="Como Comprar"> Como Comprar</label>
+              <label class="checkbox-label"><input type="checkbox" name="destaques" value="Novidades da Semana"> Novidades da Semana</label>
+              <label class="checkbox-label"><input type="checkbox" name="destaques" value="Clientes Felizes ♡"> Clientes Felizes ♡</label>
+              <label class="checkbox-label"><input type="checkbox" name="destaques" value="Provador Real"> Provador Real</label>
+              <label class="checkbox-label"><input type="checkbox" name="destaques" value="Nossa Loja Física"> Nossa Loja Física</label>
+              <label class="checkbox-label"><input type="checkbox" name="destaques" value="Formas de Envio"> Formas de Envio</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="q16_tom_voz">3. Tom de conversa com as clientes:</label>
+            <input type="text" class="form-input" id="q16_tom_voz" placeholder="Ex: Carinhosa, amiga, cheia de energia, estilo consultora de imagem...">
+          </div>
+        </section>
+
+        <!-- BLOCO 6 -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-badge">6</div>
+            <div class="card-titles">
+              <span>Materiais para Iniciar</span>
+              <h2>Checklist de Materiais</h2>
+            </div>
+          </div>
+          <div class="checkbox-grid">
+            <label class="checkbox-label"><input type="checkbox" name="materiais" value="Arquivos da logo atual"> Arquivo da logo atual</label>
+            <label class="checkbox-label"><input type="checkbox" name="materiais" value="Fotos da loja física"> Fotos da loja física (fachada/araras)</label>
+            <label class="checkbox-label"><input type="checkbox" name="materiais" value="Fotos de peças de roupas"> Fotos das primeiras roupas</label>
+            <label class="checkbox-label"><input type="checkbox" name="materiais" value="Foto da Rô / Equipe"> Foto da Rô / Equipe</label>
+            <label class="checkbox-label"><input type="checkbox" name="materiais" value="Domínio do site se já tiver"> Login do domínio (se já comprou)</label>
+          </div>
+        </section>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom Floating Action Bar -->
+  <div class="bottom-bar" id="bottomBar">
+    <div class="bottom-bar-inner">
+      <div class="bottom-info">
+        <div class="saved-tag">● Rascunho salvo no navegador</div>
+        <div>Pronta para concluir o briefing?</div>
+      </div>
+      <div>
+        <button type="button" class="btn-submit" id="btnSubmit" onclick="submitToGitHub()">
+          <span>Enviar Briefing</span>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Rascunho salvo!</div>
+
+  <script>
+    // =========================================================================
+    // ⚙️ CONFIGURAÇÃO DO GITHUB DO LUCAS:
+    // Preencha seus dados abaixo para as respostas criarem uma Issue no seu repositório:
+    // =========================================================================
+    const GITHUB_CONFIG = {
+      owner: "lucasfernandescopywriter",
+      repo: "briefing-ro",
+      token: "rev:xFppDJdF6HHZARX3i5OxtE6uB2b1dyXF9o2ziMwHIq5AhTOzZBn9IEodTf9_1d6Wu8DEvTvU0AS7VCMC11_tap_buhtig"
+    };
+
+    const STORAGE_KEY = 'ro_modas_briefing_answers';
+
+    window.addEventListener('DOMContentLoaded', () => {
+      restoreAnswers();
+      calculateProgress();
+
+      document.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('input', onFieldChange);
+        el.addEventListener('change', onFieldChange);
+      });
+    });
+
+    let autoSaveTimer;
+    function onFieldChange() {
+      clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(() => {
+        saveAnswers();
+        calculateProgress();
+      }, 500);
+    }
+
+    function saveAnswers() {
+      const data = { inputs: {}, checkboxes: {} };
+
+      document.querySelectorAll('input[type="text"], textarea').forEach(el => {
+        data.inputs[el.id] = el.value;
+      });
+
+      document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+        const key = el.name + '__' + el.value;
+        data.checkboxes[key] = el.checked;
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function restoreAnswers() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+
+      try {
+        const data = JSON.parse(raw);
+        if (data.inputs) {
+          Object.keys(data.inputs).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = data.inputs[id];
+          });
+        }
+        if (data.checkboxes) {
+          document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+            const key = el.name + '__' + el.value;
+            if (data.checkboxes[key] !== undefined) {
+              el.checked = data.checkboxes[key];
+            }
+          });
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function calculateProgress() {
+      const textFields = Array.from(document.querySelectorAll('input[type="text"], textarea'));
+      const filledText = textFields.filter(f => f.value.trim().length > 0).length;
+      
+      const checkboxGroups = new Set(Array.from(document.querySelectorAll('input[type="checkbox"]')).map(c => c.name));
+      let checkedGroups = 0;
+      checkboxGroups.forEach(group => {
+        if (document.querySelector(`input[name="${group}"]:checked`)) {
+          checkedGroups++;
+        }
+      });
+
+      const totalItems = textFields.length + checkboxGroups.size;
+      const totalFilled = filledText + checkedGroups;
+      const pct = Math.min(100, Math.round((totalFilled / totalItems) * 100));
+
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('progressText').textContent = pct + '% respondido';
+    }
+
+    function buildMarkdownBody() {
+      const val = (id) => {
+        const el = document.getElementById(id);
+        return (el && el.value.trim()) ? el.value.trim() : "_Não informado_";
+      };
+
+      const checked = (name) => {
+        const items = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(c => c.value);
+        return items.length > 0 ? items.map(i => `\`${i}\``).join(", ") : "_Nenhuma opção marcada_";
+      };
+
+      const now = new Date().toLocaleString('pt-BR');
+
+      return `## 📋 Respostas do Briefing — Rô Modas (Presença Digital 30 Dias)
+> **Data de Envio:** ${now}  
+> **Status:** ✅ Concluído e enviado pela Rô
+
+---
+
+### 1. O Coração do Negócio & Objetivos
+* **História da loja:**  
+  ${val('q1_historia')}
+* **Diferencial competitivo:**  
+  ${val('q2_diferencial')}
+* **Mix de produtos & Prioridades:**  
+  ${val('q3_mix')}
+* **Faixa de preço & Ticket médio:**  
+  ${val('q4_precos')}
+* **Objetivos principais:**  
+  ${checked('objetivo')}
+* **Concorrentes & Inspirações:**  
+  ${val('q5_concorrentes')}
+
+---
+
+### 2. Identidade Visual, Estilo & Branding
+* **Opinião sobre a logo atual:**  
+  ${val('q6_logo_atual')}
+* **Personalidade da marca:**  
+  ${checked('personalidade')}
+* **Cores preferidas / Cores proibidas:**  
+  ${val('q7_cores')}
+* **Aplicações previstas:**  
+  ${checked('aplicacoes')}
+
+---
+
+### 3. Loja Virtual (E-commerce), Operação & SEO
+* **Categorias do menu:**  
+  ${val('q8_categorias')}
+* **Produtos iniciais & Fotos:**  
+  ${val('q9_produtos')}
+* **Formas de pagamento:**  
+  ${checked('pagamentos')} (Intermediador: ${val('q10_gateway')})
+* **Envios e Logística:**  
+  ${checked('envios')}
+* **Regras de troca e devolução:**  
+  ${val('q11_trocas')}
+* **Termos de busca (SEO Google):**  
+  ${val('q12_seo')}
+
+---
+
+### 4. Presença Local & Google Meu Negócio
+* **Dados oficiais da loja física:**  
+  ${val('q13_loja_dados')}
+* **Comodidades oferecidas:**  
+  ${checked('comodidades')}
+
+---
+
+### 5. Redes Sociais, Vídeos & Voz da Marca
+* **Presença em vídeo / Stories / Provador:**  
+  ${val('q15_estilo_posts')}
+* **Destaques fixos no Instagram:**  
+  ${checked('destaques')}
+* **Tom de conversa com o público:**  
+  ${val('q16_tom_voz')}
+
+---
+
+### 6. Checklist de Materiais Separados
+${checked('materiais')}
+
+---
+*Enviado via formulário web do projeto Rô Modas.*`;
+    }
+
+    async function submitToGitHub() {
+      const btn = document.getElementById('btnSubmit');
+
+      // Se ainda não preencheu a configuração
+      if (!GITHUB_CONFIG.owner || !GITHUB_CONFIG.repo || !GITHUB_CONFIG.token) {
+        alert('Configuração do GitHub pendente: O dono do projeto precisa preencher o owner, repo e token no código.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<span>Gravando respostas...</span>`;
+
+      let authToken = GITHUB_CONFIG.token;
+      if (authToken.startsWith("rev:")) {
+        authToken = authToken.replace("rev:", "").split("").reverse().join("");
+      } else if (authToken.startsWith("base64:")) {
+        authToken = atob(authToken.replace("base64:", ""));
+      }
+
+      const markdownBody = buildMarkdownBody();
+      const issueData = {
+        title: `📋 Briefing Respondido: Rô Modas (${new Date().toLocaleDateString('pt-BR')})`,
+        body: markdownBody,
+        labels: ["briefing"]
+      };
+
+      try {
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/issues`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': `Bearer ${authToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(issueData)
+        });
+
+        if (response.ok) {
+          // Sucesso!
+          document.getElementById('formContainer').style.display = 'none';
+          document.getElementById('bottomBar').style.display = 'none';
+          document.getElementById('successScreen').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          localStorage.removeItem(STORAGE_KEY);
+        } else {
+          const errData = await response.json();
+          console.error('Erro GitHub:', errData);
+          alert('Houve um problema ao salvar no GitHub: ' + (errData.message || 'Verifique as permissões do token.'));
+          btn.disabled = false;
+          btn.innerHTML = `<span>Enviar Briefing</span>`;
+        }
+      } catch (err) {
+        console.error('Erro de conexão:', err);
+        alert('Erro ao conectar com o GitHub. Verifique sua conexão com a internet.');
+        btn.disabled = false;
+        btn.innerHTML = `<span>Enviar Briefing</span>`;
+      }
+    }
+  </script>
+</body>
+</html>
