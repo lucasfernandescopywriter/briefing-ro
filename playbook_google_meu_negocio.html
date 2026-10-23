@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual do Google Meu Negócio & Busca Local — Rô Modas</title>
+  
+  <!-- Tipografia Inter (Estilo Google Docs / Obsidian) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-workspace: #F6F6F4;
+      --bg-document: #FFFFFF;
+      --border-subtle: #E8E8E5;
+      --border-medium: #D1D1CC;
+      --text-title: #111111;
+      --text-body: #2B2B2B;
+      --text-secondary: #555552;
+      --text-muted: #80807B;
+      --accent-soft: #FAF9F7;
+      --accent-blue: #1A56DB;
+      --accent-blue-bg: #EBF5FB;
+      --accent-green: #0E6251;
+      --accent-green-bg: #E8F8F5;
+      --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background-color: var(--bg-workspace);
+      color: var(--text-body);
+      font-family: var(--font-stack);
+      font-size: 15px;
+      line-height: 1.75;
+      padding: 36px 16px 80px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .document-sheet {
+      width: 100%;
+      max-width: 880px;
+      background: var(--bg-document);
+      border: 1px solid var(--border-subtle);
+      padding: 52px 60px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .top-nav {
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      background: #F0F0EE;
+      transition: all 0.15s;
+    }
+
+    .back-btn:hover {
+      background: #E5E5E2;
+      color: var(--text-title);
+    }
+
+    .badge-category {
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 4px 9px;
+      background: var(--accent-blue-bg);
+      color: var(--accent-blue);
+      border-radius: 3px;
+    }
+
+    h1.doc-title {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .intro-banner {
+      background: var(--accent-soft);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent-blue);
+      padding: 16px 20px;
+      margin-bottom: 36px;
+      font-size: 14.5px;
+      color: var(--text-body);
+      border-radius: 2px;
+    }
+
+    h2.section-heading {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.3px;
+      margin-top: 42px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    h3.sub-heading {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    p { margin-bottom: 14px; font-size: 14.5px; }
+
+    ul, ol { margin: 10px 0 18px 20px; font-size: 14.5px; }
+    li { margin-bottom: 8px; line-height: 1.65; }
+
+    strong { font-weight: 600; color: var(--text-title); }
+
+    /* Diagrama de Pilares Algorítmicos */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 20px 0 28px 0;
+    }
+
+    .pillar-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 18px 16px;
+      border-radius: 4px;
+      border-top: 3px solid #1A56DB;
+    }
+
+    .pillar-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-bottom: 6px;
+    }
+
+    .pillar-card-desc {
+      font-size: 12.8px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Showcase de Imagens */
+    .image-showcase {
+      margin: 24px 0 32px 0;
+      border: 1px solid var(--border-subtle);
+      background: var(--accent-soft);
+      padding: 24px;
+    }
+
+    .image-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .image-frame {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 12px;
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      display: block;
+      background: #FAF9F7;
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .image-caption strong {
+      display: block;
+      color: var(--text-title);
+      font-size: 12.5px;
+      margin-bottom: 2px;
+    }
+
+    /* Player de Vídeo Responsivo & Card de Mídia */
+    .video-block {
+      background: #FAFAFA;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 18px;
+      margin: 22px 0 28px 0;
+    }
+
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .video-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-title);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid var(--border-medium);
+      background: #111111;
+      margin-bottom: 12px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+    }
+
+    .video-btn {
+      color: #1A56DB;
+      background: #EBF5FB;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .video-btn:hover {
+      background: #D4E6F1;
+      color: #0E3A75;
+    }
+
+    .process-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 20px 22px;
+      margin: 18px 0;
+      border-left: 3px solid var(--text-title);
+      border-radius: 2px;
+    }
+
+    .process-badge {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .document-sheet { padding: 32px 18px; }
+      body { padding: 12px 6px; }
+      .pillar-grid, .image-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="document-sheet">
+
+    <!-- Navegação Superior -->
+    <div class="top-nav">
+      <a href="apresentacao.html#google-maps" class="back-btn">&larr; Voltar à Apresentação Principal</a>
+      <span class="badge-category">Manual Operacional &bull; Google Maps</span>
+    </div>
+
+    <!-- Cabeçalho do Documento -->
+    <h1 class="doc-title">Manual de Otimização no Google Meu Negócio & Busca Local</h1>
+    <div class="doc-meta">
+      <span><strong>Empresa:</strong> Rô Modas</span>
+      <span><strong>Endereço Físico:</strong> Av. Quinze de Novembro, 2516 — Bairro Alto, Matão/SP</span>
+      <span><strong>Canal:</strong> Google Maps & Busca Orgânica</span>
+    </div>
+
+    <!-- Introdução -->
+    <div class="intro-banner">
+      <strong>A Força da Intenção de Compra Local:</strong> Quando uma cliente em Matão pesquisa no Google por <em>"loja de roupa feminina perto de mim"</em> ou <em>"calça jeans em Matão"</em>, ela já está com a decisão tomada e pronta para comprar. Estar no topo do Google Maps garante clientes físicas entrando na loja da Avenida 15 de Novembro todos os dias, com custo zero por clique.
+    </div>
+
+    <!-- ====================================================================
+         1. OS 3 PILARES DO ALGORITMO DO GOOGLE MAPS
+         ==================================================================== -->
+    <h2 class="section-heading">1. Como Funciona o Algoritmo do Google Maps</h2>
+    <p>O Google organiza e classifica as empresas locais com base em três fatores determinantes:</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-card-title">1. Proximidade</div>
+        <div class="pillar-card-desc">
+          A distância física entre a cliente e a Avenida Quinze de Novembro, 2516, no Bairro Alto. A localização da loja física é um ponto comercial estratégico e bem posicionado em Matão.
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-card-title">2. Relevância</div>
+        <div class="pillar-card-desc">
+          O alinhamento exato entre as categorias cadastradas na ficha (<em>Loja de roupas femininas</em>, <em>Loja de jeans</em>, <em>Loja de roupas infantis</em>) e o que a cliente digitou na busca.
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-card-title">3. Proeminência</div>
+        <div class="pillar-card-desc">
+          A reputação digital da marca: quantidade de avaliações 5 estrelas recebidas por semana, respostas da equipe a todos os comentários e fotos de vitrine atualizadas com frequência.
+        </div>
+      </div>
+    </div>
+
+    <!-- Vídeo Tutorial Embutido -->
+    <div class="video-block">
+      <div class="video-header">
+        <span class="video-title">🎥 Vídeo Tutorial: Como Colocar e Otimizar sua Empresa no Google Meu Negócio</span>
+        <span class="badge-category" style="background: #EBF5FB; color: #1B4F72;">Google Perfil</span>
+      </div>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/Ez3XletIlhA" 
+          title="Como Colocar Minha Empresa no Google Meu Negócio" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-footer">
+        <span>Assista no player acima diretamente na página ou abra no YouTube oficial:</span>
+        <a href="https://www.youtube.com/watch?v=Ez3XletIlhA" target="_blank" rel="noopener noreferrer" class="video-btn">
+          <span>▶ Assistir no YouTube Oficial</span> &nearr;
+        </a>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         2. TRANSFORMAÇÃO DA FICHA DA RÔ MODAS
+         ==================================================================== -->
+    <h2 class="section-heading">2. Situação Atual vs. Padrão de Excelência</h2>
+    <p>Abaixo visualizamos a evolução necessária para a ficha da Rô Modas:</p>
+
+    <div class="image-showcase">
+      <div class="image-grid-2">
+        <div class="image-frame">
+          <img src="assets/google_meu_negocio_atual.png" alt="Google Meu Negócio Atual da Rô Modas">
+          <div class="image-caption">
+            <strong>Ficha Atual (Não Reivindicada)</strong>
+            Exibe apenas a foto automática da rua capturada pelo carro do Street View, sem número de telefone, sem site cadastrado e sem avaliações de clientes.
+          </div>
+        </div>
+
+        <div class="image-frame">
+          <img src="assets/google_meu_negocio_referencia.jpg" alt="Referência de Perfil Otimizado do Google">
+          <div class="image-caption">
+            <strong>Como Deve Ficar (Padrão Otimizado)</strong>
+            Nome com proposta de valor, carrossel de produtos com fotos em tons terrosos, botões diretos para o site e WhatsApp, e dezenas de avaliações 5 estrelas.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         3. ROTINA SEMANAL DE AVALIAÇÕES 5 ESTRELAS
+         ==================================================================== -->
+    <h2 class="section-heading">3. Rotina Prática para Coleta de Avaliações</h2>
+
+    <div class="process-card">
+      <span class="process-badge">Script Simples para o Balcão da Loja</span>
+      <strong>Como Pedir Avaliação para a Cliente Física:</strong>
+      <p style="font-size: 13.5px; margin-top: 8px; margin-bottom: 0;">
+        Após finalizar o atendimento no caixa da loja física de Matão, a colaboradora entrega a sacola perfumada e diz: <em>"Dona Maria, nós adoramos seu atendimento! Se a senhora puder avaliar a Rô Modas com 5 estrelinhas no Google, nos ajuda muito. Vou mandar o link rapidinho no seu WhatsApp!"</em>.
+      </p>
+    </div>
+
+    <!-- Rodapé -->
+    <div style="margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+      <a href="apresentacao.html#google-maps" class="back-btn">&larr; Voltar à Apresentação Principal</a>
+      <span style="font-size: 12.5px; color: var(--text-muted);">Rô Modas &bull; Guia de Busca Local</span>
+    </div>
+
+  </article>
+
+</body>
+</html>

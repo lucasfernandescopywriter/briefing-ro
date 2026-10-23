@@ -1,0 +1,17 @@
+# Video and Audio Media (Large files > 100MB rejected by GitHub)
+*.mp4
+*.wav
+*.bin
+whisper_bin/
+
+# Temporary / Scratch Files
+scratch/
+scratch_*
+*.tmp
+*.log
+transcricao_*
+video*.md
+b8f7*.jpg
+image.png
+first_version_seal.svg
+

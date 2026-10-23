@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual Operacional da Nuvemshop — Rô Modas</title>
+  
+  <!-- Tipografia Inter (Estilo Google Docs / Obsidian) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-workspace: #F6F6F4;
+      --bg-document: #FFFFFF;
+      --border-subtle: #E8E8E5;
+      --border-medium: #D1D1CC;
+      --text-title: #111111;
+      --text-body: #2B2B2B;
+      --text-secondary: #555552;
+      --text-muted: #80807B;
+      --accent-soft: #FAF9F7;
+      --accent-green: #0E6251;
+      --accent-green-bg: #E8F8F5;
+      --accent-blue: #1B4F72;
+      --accent-blue-bg: #EBF5FB;
+      --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background-color: var(--bg-workspace);
+      color: var(--text-body);
+      font-family: var(--font-stack);
+      font-size: 15px;
+      line-height: 1.75;
+      padding: 36px 16px 80px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .document-sheet {
+      width: 100%;
+      max-width: 880px;
+      background: var(--bg-document);
+      border: 1px solid var(--border-subtle);
+      padding: 52px 60px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .top-nav {
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      background: #F0F0EE;
+      transition: all 0.15s;
+    }
+
+    .back-btn:hover {
+      background: #E5E5E2;
+      color: var(--text-title);
+    }
+
+    .badge-category {
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 4px 9px;
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      border-radius: 3px;
+    }
+
+    h1.doc-title {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .intro-banner {
+      background: var(--accent-soft);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent-green);
+      padding: 16px 20px;
+      margin-bottom: 36px;
+      font-size: 14.5px;
+      color: var(--text-body);
+      border-radius: 2px;
+    }
+
+    h2.section-heading {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.3px;
+      margin-top: 42px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    h3.sub-heading {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    p { margin-bottom: 14px; font-size: 14.5px; }
+
+    ul, ol { margin: 10px 0 18px 20px; font-size: 14.5px; }
+    li { margin-bottom: 8px; line-height: 1.65; }
+
+    strong { font-weight: 600; color: var(--text-title); }
+
+    /* Caixa de Processo */
+    .process-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 20px 22px;
+      margin: 18px 0;
+      border-left: 3px solid var(--text-title);
+      border-radius: 2px;
+    }
+
+    .process-badge {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .code-box {
+      background: #F4F4F2;
+      border: 1px solid #E2E2DF;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-family: monospace;
+      font-size: 13.5px;
+      margin: 10px 0;
+      color: #1F2937;
+    }
+
+    /* Player de Vídeo Responsivo & Card de Mídia */
+    .video-block {
+      background: #FAFAFA;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 18px;
+      margin: 22px 0 28px 0;
+    }
+
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .video-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-title);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid var(--border-medium);
+      background: #111111;
+      margin-bottom: 12px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+    }
+
+    .video-btn {
+      color: #1A56DB;
+      background: #EBF5FB;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .video-btn:hover {
+      background: #D4E6F1;
+      color: #0E3A75;
+    }
+
+    /* Showcase da Tela Real de Cadastro (Print da Nuvemshop) */
+    .interface-preview-frame {
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      background: #FAF9F7;
+      margin: 22px 0 28px 0;
+      overflow: hidden;
+    }
+
+    .interface-preview-header {
+      background: #F0F0EE;
+      padding: 10px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .interface-scroll-area {
+      max-height: 520px;
+      overflow-y: auto;
+      background: #FFFFFF;
+      text-align: center;
+    }
+
+    .interface-scroll-area img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    /* Tabela de Campos da Nuvemshop */
+    .field-guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 18px 0 24px 0;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .field-guide-table th {
+      background: #FAFAFA;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-medium);
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-title);
+    }
+
+    .field-guide-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-body);
+      vertical-align: top;
+    }
+
+    .field-guide-table tr:nth-child(even) td {
+      background: #FAF9F7;
+    }
+
+    .field-tag {
+      display: inline-block;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 600;
+      background: #EAEAEA;
+      color: #2B2B2B;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .document-sheet { padding: 32px 18px; }
+      body { padding: 12px 6px; }
+      .field-guide-table { font-size: 12.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="document-sheet">
+
+    <!-- Navegação Superior -->
+    <div class="top-nav">
+      <a href="apresentacao.html#nuvemshop-operacao" class="back-btn">&larr; Voltar à Apresentação Principal</a>
+      <span class="badge-category">Manual Operacional &bull; Nuvemshop</span>
+    </div>
+
+    <!-- Cabeçalho do Documento -->
+    <h1 class="doc-title">Manual de Operação da Nuvemshop: Os 3 Processos da Loja Física</h1>
+    <div class="doc-meta">
+      <span><strong>Empresa:</strong> Rô Modas (@romodasmatao)</span>
+      <span><strong>Loja Física:</strong> Av. Quinze de Novembro, 2516 — Bairro Alto, Matão/SP</span>
+      <span><strong>Destinado a:</strong> Vendedoras e Equipe de Atendimento</span>
+    </div>
+
+    <!-- Introdução Focada nas Tarefas da Equipe -->
+    <div class="intro-banner">
+      <strong>Guia de Trabalho da Equipe:</strong> Este manual foi desenhado exclusivamente para a rotina prática das funcionárias e da dona Rô na loja física. As configurações técnicas complexas (como apontamento de domínio próprio, DNS e gateway bancário) são executadas diretamente pela consultoria. No dia a dia da loja, a equipe precisa dominar com maestria exatamente <strong>três processos operacionais</strong>:
+      <ol style="margin: 8px 0 0 20px; font-size: 13.5px;">
+        <li><strong>Cadastro de Produtos com Foco em Vendas (SEO & Conversão)</strong></li>
+        <li><strong>Controle de Estoque Integrado (Loja Física x Site)</strong></li>
+        <li><strong>Impressão de Etiquetas em Folha A4 Comum e Embalagem de Envio</strong></li>
+      </ol>
+    </div>
+
+    <!-- ====================================================================
+         PROCESSO 1: CADASTRO DE PRODUTOS
+         ==================================================================== -->
+    <h2 class="section-heading">Processo 1: Como Cadastrar Produtos com Foco em Vendas</h2>
+    <p>
+      O cadastro de produtos é a vitrine virtual da Rô Modas na internet. Um produto bem cadastrado responde a todas as dúvidas da cliente antes que ela precise chamar no WhatsApp e faz o anúncio aparecer nas primeiras posições de busca do Google.
+    </p>
+
+    <!-- Visualização da Tela Real da Nuvemshop -->
+    <div class="interface-preview-frame">
+      <div class="interface-preview-header">
+        <span>📸 Tela Real do Painel Nuvemshop: Cadastro de "Novo Produto"</span>
+        <span style="font-weight: normal; font-size: 11.5px; color: var(--text-muted);">&darr; Role a imagem abaixo para ver todos os campos</span>
+      </div>
+      <div class="interface-scroll-area">
+        <img src="assets/nuvemshop_cadastro_produto.png" alt="Interface Completa de Cadastro de Produto da Nuvemshop">
+      </div>
+    </div>
+
+    <!-- Vídeo Tutorial Embutido -->
+    <div class="video-block">
+      <div class="video-header">
+        <span class="video-title">🎥 Vídeo Tutorial: Passo a Passo do Cadastro na Nuvemshop</span>
+        <span class="badge-category" style="background: #EBF5FB; color: #1B4F72;">Tutorial Prático</span>
+      </div>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/BOHq8GVM9X4" 
+          title="Como Cadastrar Produtos na Nuvemshop Passo a Passo" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-footer">
+        <span>Assista à demonstração acima diretamente na página ou abra no YouTube oficial:</span>
+        <a href="https://www.youtube.com/watch?v=BOHq8GVM9X4" target="_blank" rel="noopener noreferrer" class="video-btn">
+          <span>▶ Assistir no YouTube Oficial</span> &nearr;
+        </a>
+      </div>
+    </div>
+
+    <h3 class="sub-heading">Guia Campo por Campo (Conforme o Painel da Loja):</h3>
+    <p>Abaixo detalhamos exatamente o que a colaboradora deve preencher em cada bloco da tela de cadastro:</p>
+
+    <table class="field-guide-table">
+      <thead>
+        <tr>
+          <th style="width: 28%;">Seção do Painel</th>
+          <th style="width: 32%;">O Que Preencher</th>
+          <th style="width: 40%;">Padrão de Qualidade da Rô Modas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-tag">Nome e Descrição</span></td>
+          <td><strong>Título SEO</strong> e Descrição completa com medidas.</td>
+          <td>
+            <strong>Fórmula do Título:</strong> <code>[Peça] + [Modelagem] + [Tecido/Detalhe] — Rô Modas</code>.<br>
+            <em>Ex: Vestido Midi Canelado Manga Curta Casual — Rô Modas</em>.<br>
+            Na descrição, inserir tabela em centímetros (busto, cintura, quadril) e ocasião de uso.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="field-tag">Fotos e Vídeo</span></td>
+          <td>Mínimo de 3 imagens claras da peça.</td>
+          <td>
+            <strong>Foto 1:</strong> No corpo (provador com iluminação limpa ou modelo IA);<br>
+            <strong>Foto 2:</strong> Detalhe bem próximo da textura do tecido, costura e botões;<br>
+            <strong>Foto 3:</strong> Costas e caimento traseiro.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="field-tag">Preço</span></td>
+          <td>Preço de venda e Preço promocional.</td>
+          <td>
+            Trabalhar a faixa de <strong>R$ 35,00 a R$ 150,00</strong>. Em promoções, preencher o "Preço de" (ex: R$ 89,90) e o "Preço por" (ex: R$ 69,90) para o site exibir a tarja de desconto.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="field-tag">Tipo de Produto & Frete</span></td>
+          <td>Marcar <strong>Físico</strong> e inserir dimensões reais do pacote.</td>
+          <td>
+            <strong>Crucial para o cálculo do frete:</strong> Colocar o peso do pacote dobrado (ex: <code>0.300 kg</code>) e as dimensões (ex: <code>Comprimento: 25cm | Largura: 20cm | Altura: 5cm</code>). Preencher o código interno (SKU) para identificação rápida.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="field-tag">Variações</span></td>
+          <td>Tamanhos e Cores disponíveis.</td>
+          <td>
+            Cadastrar as opções disponíveis no cabide da loja: tamanhos <strong>P, M, G, GG</strong> ou numerações do jeans (<strong>36 ao 48</strong>).
+          </td>
+        </tr>
+        <tr>
+          <td><span class="field-tag">Inventário (Estoque)</span></td>
+          <td>Quantidade física exata na loja física.</td>
+          <td>
+            Inserir apenas o número de peças que estão fisicamente disponíveis na arara da loja de Matão (ex: 2 no tamanho P, 3 no tamanho M).
+          </td>
+        </tr>
+        <tr>
+          <td><span class="field-tag">Categorias</span></td>
+          <td>Selecione a categoria no menu da loja.</td>
+          <td>
+            Marcar as categorias correspondentes: <em>Vestidos</em>, <em>Calças Jeans</em>, <em>Blusas</em>, <em>Conjuntos</em>, <em>Calçados</em> ou <em>Infantil</em>.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="field-tag">SEO e Busca na Loja</span></td>
+          <td>Tags, Marca e Descrição para o Google.</td>
+          <td>
+            <strong>Marca:</strong> Digitar sempre <code>Rô Modas</code>.<br>
+            <strong>Tags:</strong> <code>moda feminina matão</code>, <code>vestido midi</code>, <code>jeans elastano</code>.<br>
+            A URL do produto deve ser limpa e sem acentos.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="field-tag">Visibilidade</span></td>
+          <td>Deixar como <strong>Visível</strong>.</td>
+          <td>
+            O produto vai ao ar imediatamente para compra no site e pode ser compartilhado no Instagram e WhatsApp.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ====================================================================
+         PROCESSO 2: CONTROLE DE ESTOQUE INTEGRADO
+         ==================================================================== -->
+    <h2 class="section-heading">Processo 2: Controle de Estoque Integrado (Loja Física x Site)</h2>
+    <p>
+      Para que a mesma peça não seja vendida simultaneamente na loja de Matão e na internet, a equipe executa uma rotina simples em dois momentos do dia:
+    </p>
+
+    <div class="process-card">
+      <span class="process-badge">Rotina da Manhã (09h00) &bull; Abertura da Loja</span>
+      <strong>Baixa Imediata na Arara ao Notificar Pedido Online:</strong>
+      <p style="font-size: 13.5px; margin-top: 8px; margin-bottom: 0;">
+        Ao abrir a loja, a colaboradora entra no aplicativo da Nuvemshop no celular. Ao constatar um pedido com status <strong>"Pagamento Confirmado"</strong>, vai imediatamente à arara física da loja, retira a peça física e a coloca na bancada de expedição com uma etiqueta contendo o nome da cliente. Dessa forma, nenhuma cliente presencial corre o risco de comprar a peça que já foi reservada online.
+      </p>
+    </div>
+
+    <div class="process-card">
+      <span class="process-badge">Rotina da Tarde (17h30) &bull; Fechamento do Caixa</span>
+      <strong>Ajuste de Balcão das Vendas Presenciais:</strong>
+      <p style="font-size: 13.5px; margin-top: 8px; margin-bottom: 0;">
+        Se durante o dia alguma peça que também estava exposta no site foi vendida presencialmente no balcão da loja física, a funcionária abre o aplicativo da Nuvemshop, pesquisa a referência da peça e <strong>dá baixa manual de 1 unidade no estoque virtual</strong>. Esse ajuste rápido leva menos de 30 segundos e garante que o estoque da internet permaneça 100% fiel à realidade da loja.
+      </p>
+    </div>
+
+    <!-- ====================================================================
+         PROCESSO 3: IMPRESSÃO DE ETIQUETAS EM FOLHA A4
+         ==================================================================== -->
+    <h2 class="section-heading">Processo 3: Impressão da Etiqueta em Folha A4 Comum (Sem Impressora Zebra)</h2>
+    <p>
+      A Rô Modas <strong>não necessita adquirir uma impressora térmica profissional (Zebra)</strong> de R$ 1.500 para despachar encomendas. Qualquer <strong>impressora de escritório comum (laser ou jato de tinta) com papel sulfite A4 convencional</strong> realiza o despacho com total validade perante os Correios e transportadoras.
+    </p>
+
+    <!-- Vídeo Tutorial Embutido de Impressão A4 -->
+    <div class="video-block">
+      <div class="video-header">
+        <span class="video-title">🎥 Vídeo Tutorial: Como Imprimir Etiquetas de Envio em Folha A4 Comum</span>
+        <span class="badge-category" style="background: #FEF9E7; color: #7D6608;">Logística A4</span>
+      </div>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/3ga6rgIpnM8" 
+          title="Como Gerar e Imprimir Etiquetas de Envio em Folha A4" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-footer">
+        <span>Demonstração prática de configuração e impressão sem erros de código de barras:</span>
+        <a href="https://www.youtube.com/watch?v=3ga6rgIpnM8" target="_blank" rel="noopener noreferrer" class="video-btn">
+          <span>▶ Assistir no YouTube Oficial</span> &nearr;
+        </a>
+      </div>
+    </div>
+
+    <div class="process-card">
+      <span class="process-badge">Passo a Passo de Impressão e Empacotamento</span>
+      <strong>Procedimento Padrão de Expedição:</strong>
+      <ol style="margin-top: 10px; font-size: 13.5px;">
+        <li>
+          <strong>Gerar a Etiqueta em PDF:</strong> No painel da Nuvemshop (ou plataforma Melhor Envio), acesse o pedido pago e clique em <strong>"Imprimir Etiqueta"</strong>. O sistema gerará um arquivo PDF contendo a etiqueta de postagem e a Declaração de Conteúdo;
+        </li>
+        <li>
+          <strong>Configuração Obrigatória na Impressora:</strong> Ao abrir a janela de impressão no computador, configure a escala obrigatoriamente para <strong>"Tamanho Real" (Escala 100%)</strong>. <em>Nunca utilize "Ajustar à página" ou "Reduzir"</em>, pois a redução distorce as barras do código laser e impede a leitura do scanner dos Correios;
+        </li>
+        <li>
+          <strong>Qualidade de Impressão:</strong> Selecione o modo "Padrão" ou "Alta". Evite o modo "Rascunho / Econômico" para que a tinta preta fique bem nítida;
+        </li>
+        <li>
+          <strong>Recorte e Aplicação:</strong> Recorte a etiqueta na linha pontilhada. Posicione-a na parte frontal da caixa ou envelope de segurança e cubra-a inteiramente com <strong>fita adesiva transparente larga</strong>. A fita plastifica o papel, protegendo contra umidade e chuva no trajeto;
+        </li>
+        <li>
+          <strong>Declaração de Conteúdo dos Correios:</strong> Assine o campo "Assinatura do Remetente" na folha de Declaração de Conteúdo, dobre-a e insira do lado de fora do pacote dentro de um saquinho plástico transparente protetor (conforme a exigência oficial dos Correios);
+        </li>
+        <li>
+          <strong>O Toque Especial da Rô Modas:</strong> Dobre a peça no papel de seda, borrife a fragrância característica da loja, anexe o cartão de agradecimento com o cupom de recompra e entregue para o motoboy ou leve à agência dos Correios às 14h00.
+        </li>
+      </ol>
+    </div>
+
+    <!-- Rodapé -->
+    <div style="margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+      <a href="apresentacao.html#nuvemshop-operacao" class="back-btn">&larr; Voltar à Apresentação Principal</a>
+      <span style="font-size: 12.5px; color: var(--text-muted);">Rô Modas &bull; Documento Operacional Interno</span>
+    </div>
+
+  </article>
+
+</body>
+</html>

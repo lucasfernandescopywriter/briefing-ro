@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Criação de Conteúdo no Instagram — Rô Modas</title>
+  
+  <!-- Tipografia Inter (Estilo Google Docs / Obsidian) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-workspace: #F6F6F4;
+      --bg-document: #FFFFFF;
+      --border-subtle: #E8E8E5;
+      --border-medium: #D1D1CC;
+      --text-title: #111111;
+      --text-body: #2B2B2B;
+      --text-secondary: #555552;
+      --text-muted: #80807B;
+      --accent-soft: #FAF9F7;
+      --accent-terracota: #8E5646;
+      --accent-terracota-bg: #FBEFEA;
+      --accent-green: #0E6251;
+      --accent-green-bg: #E8F8F5;
+      --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background-color: var(--bg-workspace);
+      color: var(--text-body);
+      font-family: var(--font-stack);
+      font-size: 15px;
+      line-height: 1.75;
+      padding: 36px 16px 80px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .document-sheet {
+      width: 100%;
+      max-width: 880px;
+      background: var(--bg-document);
+      border: 1px solid var(--border-subtle);
+      padding: 52px 60px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .top-nav {
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      background: #F0F0EE;
+      transition: all 0.15s;
+    }
+
+    .back-btn:hover {
+      background: #E5E5E2;
+      color: var(--text-title);
+    }
+
+    .badge-category {
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 4px 9px;
+      background: var(--accent-terracota-bg);
+      color: var(--accent-terracota);
+      border-radius: 3px;
+    }
+
+    h1.doc-title {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .intro-banner {
+      background: var(--accent-soft);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent-terracota);
+      padding: 16px 20px;
+      margin-bottom: 36px;
+      font-size: 14.5px;
+      color: var(--text-body);
+      border-radius: 2px;
+    }
+
+    h2.section-heading {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.3px;
+      margin-top: 42px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    h3.sub-heading {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    p { margin-bottom: 14px; font-size: 14.5px; }
+
+    ul, ol { margin: 10px 0 18px 20px; font-size: 14.5px; }
+    li { margin-bottom: 8px; line-height: 1.65; }
+
+    strong { font-weight: 600; color: var(--text-title); }
+
+    /* Caixa de Processo e Roteiro */
+    .process-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 20px 22px;
+      margin: 18px 0;
+      border-left: 3px solid var(--text-title);
+      border-radius: 2px;
+    }
+
+    .process-badge {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    /* Player de Vídeo Responsivo & Card de Mídia */
+    .video-block {
+      background: #FAFAFA;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 18px;
+      margin: 22px 0 28px 0;
+    }
+
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .video-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-title);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid var(--border-medium);
+      background: #111111;
+      margin-bottom: 12px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+    }
+
+    .video-btn {
+      color: #1A56DB;
+      background: #EBF5FB;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .video-btn:hover {
+      background: #D4E6F1;
+      color: #0E3A75;
+    }
+
+    /* Tabela de Metas de Criação de Conteúdo */
+    .target-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 18px 0 24px 0;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .target-table th {
+      background: #FAFAFA;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-medium);
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-title);
+    }
+
+    .target-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-body);
+      vertical-align: top;
+    }
+
+    .target-table tr:nth-child(even) td {
+      background: #FAF9F7;
+    }
+
+    .target-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .badge-reels { background: #E8F8F5; color: #0E6251; }
+    .badge-feed { background: #FEF9E7; color: #7D6608; }
+    .badge-stories { background: #EBF5FB; color: #1B4F72; }
+
+    @media (max-width: 768px) {
+      .document-sheet { padding: 32px 18px; }
+      body { padding: 12px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="document-sheet">
+
+    <!-- Navegação Superior -->
+    <div class="top-nav">
+      <a href="apresentacao.html#instagram-comparativo" class="back-btn">&larr; Voltar à Apresentação Principal</a>
+      <span class="badge-category">Manual Operacional &bull; Instagram</span>
+    </div>
+
+    <!-- Cabeçalho do Documento -->
+    <h1 class="doc-title">Manual de Criação de Conteúdo: Vídeos de Provador & Vitrine</h1>
+    <div class="doc-meta">
+      <span><strong>Perfil Oficial:</strong> @romodasmatao</span>
+      <span><strong>Foco:</strong> Gravação e Criação de Conteúdo Audiovisual</span>
+      <span><strong>Destinado a:</strong> Dona Rô e Vendedoras</span>
+    </div>
+
+    <!-- Introdução -->
+    <div class="intro-banner">
+      <strong>Diretriz de Criação de Conteúdo:</strong> Este manual orienta exclusivamente a <strong>produção e gravação de conteúdo</strong> para o Instagram da loja. Ele estabelece as metas diárias de postagem, as técnicas de gravação no provador físico da loja e elimina conteúdos que prejudicam a percepção de valor da marca. Respostas de direct e suporte ao cliente não fazem parte da rotina de gravação.
+    </div>
+
+    <!-- ====================================================================
+         1. METAS DIÁRIAS DE CRIAÇÃO DE CONTEÚDO
+         ==================================================================== -->
+    <h2 class="section-heading">1. Metas Diárias de Criação & Publicação</h2>
+    <p>
+      Para manter a loja em evidência contínua e atrair clientes de Matão e de outras cidades todos os dias, a equipe deve cumprir rigorosamente as seguintes metas de produção:
+    </p>
+
+    <table class="target-table">
+      <thead>
+        <tr>
+          <th style="width: 25%;">Formato</th>
+          <th style="width: 20%;">Meta Mínima Diária</th>
+          <th style="width: 55%;">Objetivo & Padrão de Execução</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="target-badge badge-reels">Reels Dinâmicos</span></td>
+          <td><strong>No mínimo 3 Reels / dia</strong></td>
+          <td>
+            <strong>Aquisição Orgânica:</strong> Vídeos curtos (5 a 15 segundos) mostrando a peça em movimento: provador humanizado da dona Rô, formato "No Cabide x No Corpo" e "1 Peça, 3 Looks". É o formato que atrai novos seguidores sem gastar com anúncios.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="target-badge badge-feed">Feed (Estático / Carrossel)</span></td>
+          <td><strong>No mínimo 2 Posts / dia</strong></td>
+          <td>
+            <strong>Vitrine de Confiança:</strong> Fotos limpas no corpo ou manequim bem iluminado. A legenda deve conter obrigatoriamente: referência da peça, faixa de preço (R$ 35 a R$ 150), tamanhos disponíveis (P, M, G / 36 ao 48) e link no site.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="target-badge badge-stories">Stories da Manhã</span></td>
+          <td><strong>Gravação de 3 Stories / dia</strong></td>
+          <td>
+            <strong>Técnica do Look 24 Horas:</strong> Dona Rô veste o look do dia, mostra a qualidade do tecido de perto e oferece o cupom <code>RO-OFF</code> (10% de desconto) com a figurinha de link para o site, válido apenas enquanto o Story durar.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ====================================================================
+         2. O PODER DOS VÍDEOS LOW-FI NO PROVADOR
+         ==================================================================== -->
+    <h2 class="section-heading">2. O Poder dos Vídeos Low-fi no Provador</h2>
+    <p>
+      No varejo de moda moderno, vídeos simples gravados com o próprio celular dentro do provador da loja convertem até <strong>4 vezes mais do que superproduções caras de estúdio</strong>. As clientes buscam autenticidade: querem ver o caimento no corpo de verdade, o movimento do tecido e a recomendação de quem realmente entende do produto.
+    </p>
+
+    <!-- Vídeo Tutorial Embutido -->
+    <div class="video-block">
+      <div class="video-header">
+        <span class="video-title">🎥 Vídeo Tutorial: Passo a Passo para Fazer Provadores que Mais Vendem</span>
+        <span class="badge-category" style="background: #EBF5FB; color: #1B4F72;">Provador de Moda</span>
+      </div>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/ZMmja9-XqwM" 
+          title="Como Fazer Provador para Loja de Roupas" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-footer">
+        <span>Veja a técnica de iluminação, enquadramento e apresentação da peça:</span>
+        <a href="https://www.youtube.com/watch?v=ZMmja9-XqwM" target="_blank" rel="noopener noreferrer" class="video-btn">
+          <span>▶ Assistir no YouTube Oficial</span> &nearr;
+        </a>
+      </div>
+    </div>
+
+    <div class="process-card">
+      <span class="process-badge">O Grande Diferencial da Marca</span>
+      <strong>A Dona Rô é a Maior Influenciadora da Própria Loja:</strong>
+      <p style="font-size: 13.5px; margin-top: 8px; margin-bottom: 0;">
+        Grandes redes de departamento não têm uma dona de verdade conversando com as clientes. A credibilidade de 21 anos que a dona Rô tem em Matão é incomparável. Quando ela veste uma calça jeans, mostra a elasticidade do tecido e fala com naturalidade, as seguidoras compram com total segurança.
+      </p>
+    </div>
+
+    <!-- ====================================================================
+         3. A TÉCNICA DO LOOK 24 HORAS NOS STORIES
+         ==================================================================== -->
+    <h2 class="section-heading">3. Roteiro Prático: O Look 24 Horas</h2>
+    <p>
+      O principal obstáculo para a compra imediata pela internet é a tendência da cliente de deixar para decidir depois. A técnica do Look 24 Horas elimina essa indecisão gerando urgência autêntica:
+    </p>
+
+    <div class="process-card">
+      <span class="process-badge">Roteiro dos 3 Stories Diários</span>
+      <strong>Passo a Passo de Gravação:</strong>
+      <ol style="margin-top: 10px; font-size: 13.5px;">
+        <li>
+          <strong>Story 1 (Apresentação no Corpo):</strong> A dona Rô veste o look completo, gira suavemente mostrando o caimento frontal e traseiro, com boa postura e iluminação natural ou ring light suave;
+        </li>
+        <li>
+          <strong>Story 2 (Plano Fechado de Detalhes):</strong> Aproxima a câmera do tecido, mostrando a costura, os botões, o elástico ou o zíper, destacando o conforto térmico e a maciez do tecido;
+        </li>
+        <li>
+          <strong>Story 3 (A Oferta com Prazo Fatal):</strong> <em>"Meninas, esse look está com 10% de desconto exclusivo no site com o cupom RO-OFF, mas só vale enquanto este Story estiver no ar! Se o Story sumir, o desconto acaba."</em>;
+        </li>
+        <li>
+          <strong>Figurinha de Link Direto:</strong> Inserir a figurinha oficial de link do Instagram direcionando exatamente para a página do look na loja virtual (com o texto da figurinha: <em>"Garantir meu Look com Desconto"</em>).
+        </li>
+      </ol>
+    </div>
+
+    <!-- ====================================================================
+         4. OS 3 FORMATOS DE REELS QUE MAIS VENDEM
+         ==================================================================== -->
+    <h2 class="section-heading">4. Os 3 Formatos de Reels de Alta Conversão</h2>
+    <p>Para cumprir a meta de <strong>3 Reels diários</strong> de forma rápida e eficiente:</p>
+
+    <ul>
+      <li>
+        <strong>Formato 1: "No Cabide x No Corpo"</strong> — Mostra a peça pendurada de forma simples no cabide da loja por 1 a 2 segundos e faz um corte seco direto para o vídeo da peça vestida no corpo, sorrindo e em movimento. Duração total: 6 a 10 segundos.
+      </li>
+      <li>
+        <strong>Formato 2: "1 Peça, 3 Looks Diferentes"</strong> — Pega uma calça jeans carro-chefe da loja e monta 3 composições: uma casual com tênis e t-shirt para o dia a dia, uma elegante com camisa para o trabalho e uma noite com salto e acessórios. Duração total: 15 segundos.
+      </li>
+      <li>
+        <strong>Formato 3: "Dúvidas e Truques de Caimento"</strong> — Mostra como valorizar a cintura, qual calçado combina com vestido midi ou como o elastano da calça jeans estica sem apertar. Gera alto compartilhamento entre amigas.
+      </li>
+    </ul>
+
+    <!-- ====================================================================
+         5. O QUE DEVE FICAR VS. O QUE DEVE SUMIR DO FEED
+         ==================================================================== -->
+    <h2 class="section-heading">5. O Filtro de Qualidade Visual do Feed</h2>
+    <p>Para transmitir uma imagem profissional que sustente as vendas do site, todo conteúdo publicado deve passar pelo seguinte crivo:</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0;">
+      <div style="background: #E8F8F5; border: 1px solid #A3E4D7; padding: 18px; border-radius: 4px;">
+        <strong style="color: #0E6251; display: block; margin-bottom: 8px; font-size: 14px;">&check; O QUE DEVE SER POSTADO (Padrão Ouro):</strong>
+        <ul style="font-size: 13px; margin: 0 0 0 16px;">
+          <li>Vídeos da dona Rô e colaboradoras no provador;</li>
+          <li>Fotos de peças em manequins com fundo limpo e iluminado;</li>
+          <li>Imagens elegantes com modelos realistas de IA (estilo revista);</li>
+          <li>Carrosséis mostrando frente, costas e detalhes da costura;</li>
+          <li>Legendas com preços claros, tamanhos e medidas em cm.</li>
+        </ul>
+      </div>
+
+      <div style="background: #FDEDEC; border: 1px solid #FADBD8; padding: 18px; border-radius: 4px;">
+        <strong style="color: #943126; display: block; margin-bottom: 8px; font-size: 14px;">&cross; O QUE DEVE SUMIR DO FEED (Eliminar):</strong>
+        <ul style="font-size: 13px; margin: 0 0 0 16px;">
+          <li>Cartazes promocionais poluídos estilo encarte de supermercado;</li>
+          <li>Montagens com fontes coloridas berrantes e excesso de elementos;</li>
+          <li>Fotos escuras, amareladas ou tremidas no espelho;</li>
+          <li>Fotos de sapatos ou bolsas com caixas jogadas ao fundo no chão;</li>
+          <li>Posts sem preço ou que forçam a cliente a pedir valor no comentário.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div style="margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+      <a href="apresentacao.html#instagram-comparativo" class="back-btn">&larr; Voltar à Apresentação Principal</a>
+      <span style="font-size: 12.5px; color: var(--text-muted);">Rô Modas &bull; Guia de Criação de Conteúdo</span>
+    </div>
+
+  </article>
+
+</body>
+</html>

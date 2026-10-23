@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rô Modas — Guia Estratégico & Operacional do Negócio Digital</title>
+  
+  <!-- Tipografia Fina e Legível: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN MINIMALISTA (ESTILO GOOGLE DOCS / OBSIDIAN / NOTION)
+       ========================================================================== */
+    :root {
+      --bg-workspace: #F6F6F4;
+      --bg-document: #FFFFFF;
+      --border-subtle: #E8E8E5;
+      --border-medium: #D1D1CC;
+      
+      --text-title: #111111;
+      --text-body: #2B2B2B;
+      --text-secondary: #555552;
+      --text-muted: #80807B;
+      
+      --accent-gray: #F0F0EE;
+      --accent-soft: #FAF9F7;
+      --accent-green: #0E6251;
+      --accent-green-bg: #E8F8F5;
+      --accent-red: #943126;
+      --accent-red-bg: #FDEDEC;
+      
+      --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-workspace);
+      color: var(--text-body);
+      font-family: var(--font-stack);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.75;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* ==========================================================================
+       BARRA LATERAL ESQUERDA (APENAS O SUMÁRIO EXECUTIVO)
+       ========================================================================== */
+    .sidebar {
+      width: 280px;
+      background: #FAFAFA;
+      border-right: 1px solid var(--border-subtle);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      padding: 24px 20px 14px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sidebar-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-title);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .sidebar-nav {
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .nav-item {
+      display: block;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1.45;
+    }
+
+    .nav-item:hover {
+      background: var(--accent-gray);
+      color: var(--text-title);
+    }
+
+    .nav-item.active {
+      background: var(--accent-gray);
+      color: var(--text-title);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       ÁREA PRINCIPAL DO DOCUMENTO (TELA CHEIA & TEXTO CENTRALIZADO)
+       ========================================================================== */
+    .document-viewport {
+      flex: 1;
+      height: 100vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      background: var(--bg-workspace);
+      display: flex;
+      justify-content: center;
+      padding: 36px 20px 80px 20px;
+    }
+
+    .document-sheet {
+      width: 100%;
+      max-width: 880px;
+      background: var(--bg-document);
+      border: 1px solid var(--border-subtle);
+      padding: 56px 64px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      min-height: calc(100vh - 100px);
+    }
+
+    h1.doc-title {
+      font-size: 27px;
+      font-weight: 600;
+      color: var(--text-title);
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .doc-section {
+      margin-bottom: 56px;
+      scroll-margin-top: 30px;
+    }
+
+    h2.section-heading {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.3px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    h3.sub-heading {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text-body);
+      font-size: 14.5px;
+    }
+
+    ul, ol {
+      margin: 12px 0 20px 20px;
+      color: var(--text-body);
+      font-size: 14.5px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--text-title);
+    }
+
+    /* ==========================================================================
+       DIAGRAMAS VISUAIS & INFOGRÁFICOS EM CSS
+       ========================================================================== */
+    .visual-box {
+      margin: 24px 0 32px 0;
+      border: 1px solid var(--border-subtle);
+      background: var(--accent-soft);
+      padding: 24px;
+    }
+
+    .visual-box-title {
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    /* Diagrama de 3 Etapas (O Funil da Loja Virtual) */
+    .funnel-diagram {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .funnel-step {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .funnel-step-header {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .funnel-step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .funnel-step-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+
+    .funnel-badge {
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 4px 8px;
+      background: var(--accent-gray);
+      color: var(--text-title);
+      display: inline-block;
+      width: fit-content;
+      margin-top: auto;
+    }
+
+    .funnel-badge.gold {
+      background: #FEF9E7;
+      color: #7D6608;
+      font-weight: 600;
+      border: 1px solid #F9E79F;
+    }
+
+    /* Destaque Conceitual / Bloco de Citação */
+    .insight-card {
+      border-left: 3px solid var(--border-medium);
+      padding: 14px 18px;
+      background: #FAFAFA;
+      margin: 20px 0;
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .insight-card strong {
+      color: var(--text-title);
+    }
+
+    /* ==========================================================================
+       CONTAINERS DE IMAGENS EMBUTIDAS (REAIS DO USUÁRIO)
+       ========================================================================== */
+    .image-showcase {
+      margin: 24px 0 32px 0;
+      border: 1px solid var(--border-subtle);
+      background: #FAFAFA;
+      padding: 20px;
+    }
+
+    .image-showcase-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .image-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .image-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .image-frame {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      border: 1px solid #ECECE8;
+      max-height: 520px;
+    }
+
+    .image-caption {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      padding: 4px 2px;
+    }
+
+    .image-caption strong {
+      color: var(--text-title);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ==========================================================================
+       TABELA COMPARATIVA DE PREÇOS EM REAIS (R$)
+       ========================================================================== */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 20px 0 28px 0;
+      border: 1px solid var(--border-subtle);
+    }
+
+    table.doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13.5px;
+    }
+
+    table.doc-table th {
+      background: #FAFAFA;
+      color: var(--text-title);
+      font-weight: 600;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-medium);
+      white-space: nowrap;
+    }
+
+    table.doc-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-body);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    table.doc-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ==========================================================================
+       ROTINA OPERACIONAL DIÁRIA EM CASCATA
+       ========================================================================== */
+    .routine-cascade-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0 28px 0;
+    }
+
+    .routine-channel-block {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 18px 20px;
+    }
+
+    .routine-channel-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 6px;
+    }
+
+    .channel-time-tag {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .routine-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .routine-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .routine-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-title);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       MOCKUP DE NAVEGADOR COM SCROLL INTERNO (DE FORA A FORA)
+       ========================================================================== */
+    .browser-window-mockup {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 22px 0 28px 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .browser-toolbar {
+      background: #F2F2EF;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #FF5F56; }
+    .dot-yellow { background: #FFBD2E; }
+    .dot-green { background: #27C93F; }
+
+    .browser-address-bar {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid #DCDCD8;
+      border-radius: 4px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: monospace;
+    }
+
+    .browser-viewport {
+      height: 540px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      position: relative;
+      background: #FFFFFF;
+      scroll-behavior: smooth;
+    }
+
+    .browser-viewport::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .browser-viewport::-webkit-scrollbar-track {
+      background: #F1F1EF;
+    }
+
+    .browser-viewport::-webkit-scrollbar-thumb {
+      background: #C4C4BF;
+      border-radius: 4px;
+    }
+
+    .browser-viewport img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .scroll-indicator-badge {
+      position: sticky;
+      bottom: 14px;
+      right: 14px;
+      margin-left: auto;
+      width: fit-content;
+      background: rgba(30, 36, 43, 0.88);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      font-size: 11.5px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ==========================================================================
+       DIAGRAMA DE FUNIL DE VENDAS VISUAL (ESTILO MAKEFUNNEL / FUNNELYTICS)
+       ========================================================================== */
+    .funnel-canvas {
+      background: #FAF9F7;
+      border: 1px solid var(--border-subtle);
+      padding: 24px 20px;
+      margin: 20px 0 28px 0;
+    }
+
+    .funnel-phase-header {
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .funnel-flow-container {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: stretch;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .funnel-stage-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 16px 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .funnel-stage-tag {
+      font-size: 10.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 2px;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+
+    .tag-blue { background: #EBF5FB; color: #1B4F72; }
+    .tag-green { background: #E8F8F5; color: #0E6251; }
+    .tag-gold { background: #FEF9E7; color: #7D6608; }
+
+    .funnel-stage-name {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-bottom: 6px;
+    }
+
+    .funnel-stage-actions {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 10px;
+      flex: 1;
+    }
+
+    .funnel-connector-arrow {
+      color: var(--text-muted);
+      font-size: 20px;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Tabela de Execução do Funil: Status Real e Prazos */
+    .funnel-status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .funnel-status-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 16px;
+    }
+
+    .funnel-status-title {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .status-badge-done {
+      background: #E8F8F5;
+      color: #0E6251;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .status-badge-pending {
+      background: #FEF9E7;
+      color: #7D6608;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .funnel-checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12.8px;
+      line-height: 1.45;
+      margin-bottom: 8px;
+      color: var(--text-body);
+    }
+
+    .funnel-checklist-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .check-icon-done {
+      color: #0E6251;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .check-icon-pending {
+      color: #B7950B;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Central de Playbooks & Manuais */
+    .playbook-links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .playbook-card-link {
+      display: block;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 16px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-left: 3px solid var(--text-title);
+    }
+
+    .playbook-card-link:hover {
+      border-color: var(--border-medium);
+      border-left-color: #8E5646;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transform: translateY(-1px);
+    }
+
+    .playbook-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-bottom: 4px;
+    }
+
+    .playbook-card-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* Responsividade */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .document-sheet { padding: 32px 18px; }
+      .funnel-diagram, .image-grid-2, .image-grid-3, .funnel-status-grid, .playbook-links-grid { grid-template-columns: 1fr; }
+      .funnel-flow-container { grid-template-columns: 1fr; gap: 14px; }
+      .funnel-connector-arrow { transform: rotate(90deg); margin: 4px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       BARRA LATERAL (APENAS O SUMÁRIO EXECUTIVO)
+       ========================================================================== -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">Sumário Executivo</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#pilares" class="nav-item active">1. O Funil da Loja Virtual</a>
+      <a href="#benchmarking-posthaus" class="nav-item">2. Estudo de Mercado: Posthaus</a>
+      <a href="#instagram-comparativo" class="nav-item">3. Diagnóstico do Instagram</a>
+      <a href="#mockup-instagram" class="nav-item">4. Mockup do Novo Perfil</a>
+      <a href="#ia-moda" class="nav-item">5. IA para Moda: Preços em Reais</a>
+      <a href="#nuvemshop-operacao" class="nav-item">6. Nuvemshop: Estoque e Envio</a>
+      <a href="#whatsapp-grupo" class="nav-item">7. WhatsApp & Comunidade VIP</a>
+      <a href="#google-maps" class="nav-item">8. Google Meu Negócio em Matão</a>
+      <a href="#retencao-look" class="nav-item">9. Recompra & Look 24 Horas</a>
+      <a href="#rotina-diaria" class="nav-item">10. Rotina Operacional em Cascata</a>
+    </nav>
+  </aside>
+
+  <!-- ==========================================================================
+       CANVAS PRINCIPAL (ESTILO GOOGLE DOCS / OBSIDIAN)
+       ========================================================================== -->
+  <main class="document-viewport">
+    <article class="document-sheet">
+
+      <!-- Título Principal -->
+      <h1 class="doc-title">Rô Modas: Plano Estratégico & Processos Operacionais</h1>
+      <div class="doc-meta">
+        <span><strong>Empresa:</strong> Rô Modas (@romodasmatao)</span>
+        <span><strong>Localização:</strong> Av. Quinze de Novembro, 2516 — Bairro Alto, Matão/SP</span>
+        <span><strong>Mercado:</strong> Vestuário Feminino, Infantil, Masculino e Jeans</span>
+      </div>
+
+      <!-- ====================================================================
+           1. O FUNIL DA LOJA VIRTUAL: AQUISIÇÃO, CONVERSÃO E RECOMPRA
+           ==================================================================== -->
+      <section id="pilares" class="doc-section">
+        <h2 class="section-heading">1. O Funil de Vendas da Loja Virtual</h2>
+        <p>
+          Para vender roupas pela internet todos os dias, uma loja virtual precisa de um caminho simples e organizado. Esse caminho é estruturado em três etapas interdependentes: <strong>Aquisição</strong>, <strong>Conversão</strong> e <strong>Recompra</strong>.
+        </p>
+
+        <!-- Diagrama Visual Estilo MakeFunnel / Funnelytics -->
+        <div class="funnel-canvas">
+          <div class="funnel-phase-header">
+            <span>Fluxo de Vendas Contínuo (Arquitetura 360°)</span>
+            <span style="font-weight: 500; text-transform: none; color: var(--text-secondary);">Tráfego &rarr; Transação &rarr; Fidelização</span>
+          </div>
+
+          <!-- Três Nós Conectados do Funil -->
+          <div class="funnel-flow-container">
+            
+            <!-- Etapa 1 -->
+            <div class="funnel-stage-card">
+              <span class="funnel-stage-tag tag-blue">Etapa 1 &bull; Topo</span>
+              <div class="funnel-stage-name">1. Aquisição (Atrair)</div>
+              <div class="funnel-stage-actions">
+                Atrair novos olhares qualificados através de vídeos humanizados no Instagram (Reels no provador), presença local no Google Maps de Matão e indicações de clientes.
+              </div>
+              <span class="funnel-badge" style="font-size: 11px;">Etapa Mais Cara</span>
+            </div>
+
+            <div class="funnel-connector-arrow">&rarr;</div>
+
+            <!-- Etapa 2 -->
+            <div class="funnel-stage-card">
+              <span class="funnel-stage-tag tag-green">Etapa 2 &bull; Meio</span>
+              <div class="funnel-stage-name">2. Conversão (Vender)</div>
+              <div class="funnel-stage-actions">
+                Transformar a visitante em compradora imediata através do catálogo Nuvemshop 24h, frete grátis/motoboy e atendimento rápido no WhatsApp.
+              </div>
+              <span class="funnel-badge" style="font-size: 11px;">Nuvemshop + WhatsApp</span>
+            </div>
+
+            <div class="funnel-connector-arrow">&rarr;</div>
+
+            <!-- Etapa 3 -->
+            <div class="funnel-stage-card">
+              <span class="funnel-stage-tag tag-gold">Etapa 3 &bull; Fundo</span>
+              <div class="funnel-stage-name">3. Recompra (O Ouro)</div>
+              <div class="funnel-stage-actions">
+                Fazer a cliente voltar todo mês através da Comunidade VIP no WhatsApp, técnica do Look 24h nos Stories e experiência de unboxing perfumada.
+              </div>
+              <span class="funnel-badge gold" style="font-size: 11px;">O Lucro Real da Loja</span>
+            </div>
+
+          </div>
+
+          <!-- Mapa de Execução: O Que Já Está Feito vs. Próximos Passos -->
+          <div class="funnel-status-grid">
+            
+            <!-- Bloco 1: Concluído -->
+            <div class="funnel-status-box">
+              <div class="funnel-status-title">
+                <span>O Que Já Está Feito</span>
+                <span class="status-badge-done">Concluído</span>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-done">&#10003;</span>
+                <div><strong>Diagnóstico Digital Completo:</strong> Análise de mercado e estudo de concorrência com grandes varejistas.</div>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-done">&#10003;</span>
+                <div><strong>Nova Identidade Visual:</strong> Logo moderna circular monograma "R", paleta em tons linho/terracota e tipografia refinada.</div>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-done">&#10003;</span>
+                <div><strong>Estrutura Base da Nuvemshop:</strong> Parametrização inicial de fretes (Correios e Motoboy) e checkout Nuvem Pago.</div>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-done">&#10003;</span>
+                <div><strong>Roteiros de Redes Sociais:</strong> Estrutura editorial para Instagram (provador humanizado e feed vitrine limpa).</div>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-done">&#10003;</span>
+                <div><strong>Estratégia do WhatsApp VIP:</strong> Formato de comunidade silenciosa para lançamentos semanais sem pagar taxas à Meta.</div>
+              </div>
+            </div>
+
+            <!-- Bloco 2: Plano de Ação -->
+            <div class="funnel-status-box">
+              <div class="funnel-status-title">
+                <span>Plano de Ação para Conclusão</span>
+                <span class="status-badge-pending">Entrega: Quarta-feira que vem</span>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-pending">&bull;</span>
+                <div><strong>Compra do Domínio Próprio:</strong> Registro oficial de <code>www.romodas.com.br</code> (a ser registrado junto com a Rô).</div>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-pending">&bull;</span>
+                <div><strong>Seleção dos 20 Carro-Chefes:</strong> Escolha das peças físicas mais vendidas da loja para abertura do e-commerce.</div>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-pending">&bull;</span>
+                <div><strong>Fotografia & Banners Oficiais:</strong> Produção das imagens no provador e banners em alta resolução desktop/mobile.</div>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-pending">&bull;</span>
+                <div><strong>Cadastro SEO dos Produtos:</strong> Títulos otimizados para busca no Google, tabelas de medidas em cm e pesos para frete.</div>
+              </div>
+              <div class="funnel-checklist-item">
+                <span class="check-icon-pending">&bull;</span>
+                <div><strong>Páginas Institucionais Obrigatórias:</strong> Política de Trocas em 7 dias, Termos de Uso, Privacidade e CDC no rodapé.</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           2. ESTUDO DE MERCADO: POSTHAUS (500 ANÚNCIOS ATIVOS)
+           ==================================================================== -->
+      <section id="benchmarking-posthaus" class="doc-section">
+        <h2 class="section-heading">2. Estudo de Mercado: Como os Grandes Varejistas Vendem Muito</h2>
+        <p>
+          Para entender como uma loja de roupas escala na internet, analisamos a <strong>Posthaus</strong> (Loghaus Comércio de Artigos do Vestuário Ltda). Ela foi escolhida porque tem o mesmo modelo de catálogo da Rô Modas: vende moda feminina, infantil, masculina, jeans e calçados com preços acessíveis.
+        </p>
+
+        <!-- Imagens Reais da Análise de Mercado (Google Ads + Instagram de Referência) -->
+        <div class="image-showcase">
+          <div class="image-showcase-title">Comprovações Visuais de Mercado (Tráfego & Redes Sociais)</div>
+          <div class="image-grid-2">
+            
+            <div class="image-frame">
+              <img src="assets/anuncios_google.png" alt="Central de Transparência do Google - Posthaus">
+              <div class="image-caption">
+                <strong>Prova de Escala: 500 Anúncios Ativos</strong>
+                A empresa mantém mais de 500 anúncios rodando ao mesmo tempo no Google Shopping e Meta. Se continuam pagando por esses anúncios todos os dias, é porque eles trazem retorno financeiro constante.
+              </div>
+            </div>
+
+            <div class="image-frame">
+              <img src="assets/instagram_posthaus.jpg" alt="Instagram Oficial Posthaus">
+              <div class="image-caption">
+                <strong>Referência Nacional no Instagram (@posthaus - 1,4 Mi)</strong>
+                Bio objetiva com proposta clara: anos de mercado, entrega em todo o Brasil e cupom de 1ª compra. Destaques padronizados e foco total em vídeos dinâmicos no corpo ("no site x no corpo").
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Mockup do Site com Scroll Interno (De Fora a Fora) -->
+        <div style="margin-top: 24px;">
+          <h3 class="sub-heading">Estrutura de E-commerce que Vende (Navegação Interativa)</h3>
+          <p>
+            Observe a arquitetura de página inicial da referência abaixo. Em vez de uma imagem estática reduzida, você pode <strong>rolar a janela diretamente para baixo</strong> e ver a disposição de pílulas de categorias, banners de preços acessíveis e vitrine de produtos:
+          </p>
+
+          <div class="browser-window-mockup">
+            <div class="browser-toolbar">
+              <div class="browser-dots">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+              </div>
+              <div class="browser-address-bar">
+                <span style="color: #27AE60;">🔒</span> https://www.posthaus.com.br — E-commerce Multissetorial de Alta Conversão
+              </div>
+            </div>
+            
+            <div class="browser-viewport">
+              <img src="assets/posthaus_ecommerce.png" alt="Página Completa do E-commerce de Referência">
+              <div class="scroll-indicator-badge">
+                <span>&darr;</span> Role para navegar pela página completa da loja virtual
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-heading">O que Aprendemos com Essa Referência?</h3>
+        <ul>
+          <li><strong>O Feed serve como Vitrine:</strong> O feed do Instagram precisa ser organizado e limpo para passar confiança imediata a quem entra no perfil pela primeira vez;</li>
+          <li><strong>O Reels gera Desejo e Conexão:</strong> Vídeos curtos mostrando a roupa em movimento ("no site x no corpo") têm alcance muito maior do que fotos paradas;</li>
+          <li><strong>Preço e Frete Claros:</strong> O maior medo da cliente na internet é frete caro e tamanho errado. Oferecer <em>Retirada Grátis na Loja Física de Matão</em> e <em>Motoboy Expresso</em> elimina essa trava imediatamente.</li>
+        </ul>
+      </section>
+
+      <!-- ====================================================================
+           3. DIAGNÓSTICO DO INSTAGRAM ATUAL (@romodasmatao)
+           ==================================================================== -->
+      <section id="instagram-comparativo" class="doc-section">
+        <h2 class="section-heading">3. Diagnóstico do Instagram Atual (@romodasmatao)</h2>
+        <p>
+          A Rô Modas já conquistou 11,4 mil seguidoras no Instagram e possui clientes fiéis. No entanto, ao analisar a página atual em detalhes, identificamos 4 pontos específicos que travam o crescimento das vendas:
+        </p>
+
+        <!-- Comparativo Visual Lado a Lado -->
+        <div class="image-showcase">
+          <div class="image-showcase-title">Comparação Direta de Perfis</div>
+          <div class="image-grid-2">
+            
+            <div class="image-frame">
+              <img src="assets/instagram_ro_atual.jpg" alt="Instagram Atual Rô Modas">
+              <div class="image-caption">
+                <strong>Perfil Atual (@romodasmatao)</strong>
+                A foto de perfil com fundo de madeira e letras em pé fica difícil de ler no celular. A bio possui frases genéricas e o feed mistura vídeos excelentes da Rô no provador com cartazes promocionais poluídos.
+              </div>
+            </div>
+
+            <div class="image-frame">
+              <img src="assets/instagram_posthaus.jpg" alt="Instagram de Referência Posthaus">
+              <div class="image-caption">
+                <strong>Referência Nacional (@posthaus - 1,4 Mi)</strong>
+                Logo limpa e moderna. Bio com proposta direta: tempo de mercado, frete para o Brasil e cupom para a 1ª compra. Destaques circulares organizados com capas padronizadas e feed focado em vídeos dinâmicos no corpo.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3 class="sub-heading">Os 4 Pontos Críticos do Diagnóstico:</h3>
+        <ul>
+          <li><strong>1. Bio Fraca e sem Gancho Comercial:</strong> O texto da biografia atual é genérico ("Qualidade, estilo e economia!"), não explica claramente que a loja envia para todo o Brasil, não divulga cupom de primeira compra e direciona para o Linktree em vez de levar a cliente para o site oficial;</li>
+          <li><strong>2. Ausência Total de Destaques Estruturados:</strong> O perfil não possui os círculos de destaques organizados para tirar dúvidas rápidas de quem chega pela primeira vez (como localização no Bairro Alto, fotos de provador, linha jeans e depoimentos de clientes);</li>
+          <li><strong>3. Feed sem Padronização Visual:</strong> As postagens não seguem uma identidade visual harmônica de cores e tipografia, gerando sensação de desorganização para novos visitantes;</li>
+          <li><strong>4. Uso de Cartazes Promocionais Poluídos (Estilo Encarte):</strong> O feed contém artes promocionais feitas em aplicativos/IA com excesso de cores berrantes e fontes grandes estilo panfleto de supermercado. <em>Ressalva importante:</em> o problema não é a Inteligência Artificial em si (que é excelente para fotos de modelos realistas), mas sim essas montagens promocionais poluídas que desvalorizam o aspecto sofisticado das roupas.</li>
+        </ul>
+      </section>
+
+      <!-- ====================================================================
+           4. MOCKUP DO NOVO PERFIL DA RÔ MODAS (EM APROVAÇÃO)
+           ==================================================================== -->
+      <section id="mockup-instagram" class="doc-section">
+        <h2 class="section-heading">4. Proposta de Nova Identidade Visual & Mockup do Instagram (Em Aprovação)</h2>
+        <p>
+          Abaixo apresentamos o estudo de modernização do perfil da Rô Modas. <strong>Esta nova identidade visual é uma proposta conceitual a ser avaliada junto com a dona Rô</strong>, para decidir se deseja manter a logo tradicional atual ou realizar a transição para este padrão visual minimalista:
+        </p>
+
+        <!-- Imagem do Mockup Criado -->
+        <div class="image-showcase">
+          <div class="image-showcase-title">Estudo de Modernização Aplicado no Instagram</div>
+          <div style="max-width: 480px; margin: 0 auto;">
+            <div class="image-frame">
+              <img src="assets/mockup_instagram_novo.jpg" alt="Novo Mockup de Perfil da Rô Modas">
+              <div class="image-caption">
+                <strong>Estudo Visual: Elegante e Sofisticado</strong>
+                Logo circular com monograma "R", bio estruturada com cupom de primeira compra (RO-OFF), destaques organizados em tons terrosos e feed combinando vídeos no corpo e fotos de produtos.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-heading">A Nova Bio Oficial Sugerida</h3>
+        <div class="insight-card" style="font-family: monospace; font-size: 13.5px; line-height: 1.6;">
+          <strong>Rô Modas</strong><br>
+          Compras e varejo<br>
+          Há 21 anos entregando estilo autêntico 💙<br>
+          Entrega em todo Brasil 🚚<br>
+          1ª compra? Cupom: <strong>RO-OFF</strong> &bull; 10% off + frete grátis acima de R$ 119* exclusivo no site<br>
+          🔗 <span style="color: #1E3A8A; text-decoration: underline;">www.romodas.com.br/moda</span>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           5. IA PARA MODA: PREÇOS EM REAIS & PLANO GRATUITO VS. PAGO
+           ==================================================================== -->
+      <section id="ia-moda" class="doc-section">
+        <h2 class="section-heading">5. Produção Visual de Moda com IA: Preços em Reais (R$)</h2>
+        <p>
+          Contratar fotógrafo e modelo profissional para cada nova peça custaria mais de R$ 1.500 por mês. Com ferramentas de Inteligência Artificial, a equipe tira a foto no cabide da loja e transforma em foto de modelo de revista em segundos.
+        </p>
+
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Plataforma</th>
+                <th>Plano Gratuito (Testes)</th>
+                <th>Plano Pago Mensal (R$)</th>
+                <th>O que Consegue Gerar</th>
+                <th>Qualidade para Roupas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Google Flow / Workspace</strong></td>
+                <td><strong>Gratuito</strong> (Créditos iniciais no Google AI Studio / Gemini)</td>
+                <td>Aprox. <strong>R$ 110 a R$ 165 / mês</strong> por usuário corporativo</td>
+                <td>Cerca de 100 imagens conceituais e vídeos institucionais</td>
+                <td>Boa para ideias gerais, mas altera um pouco a estampa e a costura da roupa.</td>
+              </tr>
+              <tr>
+                <td><strong>Higgsfield AI</strong><br>(Recomendada)</td>
+                <td><strong>Gratuito</strong> (Créditos de boas-vindas para testar)</td>
+                <td>Plano Starter: aprox. <strong>R$ 85 a R$ 160 / mês</strong><br>Plano Plus: aprox. <strong>R$ 270 / mês</strong></td>
+                <td>De <strong>100 a 300 fotos</strong> profissionais e até <strong>40 vídeos curtos</strong> (5 a 10s)</td>
+                <td><strong>Perfeita para moda:</strong> preserva o jeans, o caimento do tecido e cria modelos com rosto brasileiro.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="insight-card">
+          <strong>Custo por Foto:</strong> No estúdio tradicional, cada foto custa cerca de R$ 100,00. No Higgsfield AI, cada foto profissional pronta custa cerca de <strong>R$ 1,50 a R$ 2,50</strong>. É a forma mais barata do mundo de ter fotos de alto padrão para vender peças de R$ 35 a R$ 150.
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           6. NUVEMSHOP: OS 3 PROCESSOS OPERACIONAIS DA LOJA FÍSICA
+           ==================================================================== -->
+      <section id="nuvemshop-operacao" class="doc-section">
+        <h2 class="section-heading">6. Nuvemshop: Os 3 Processos Operacionais da Loja Física</h2>
+        <p>
+          A loja virtual é a extensão direta da loja da Avenida Quinze de Novembro, 2516. No dia a dia, a equipe da loja (as vendedoras e a dona Rô) só precisa executar com excelência <strong>três processos operacionais simples</strong>:
+        </p>
+
+        <!-- Box de Status de Entrega -->
+        <div class="insight-card" style="border-left: 3px solid #0E6251; background: #E8F8F5;">
+          <strong style="color: #0E6251;">Status da Entrega do E-commerce:</strong> A estrutura técnica base (Nuvem Pago/Santander, Correios, Motoboy e parâmetros visuais) já está pronta. A entrega da loja <strong>100% pronta no ar para receber pedidos</strong> — com a compra do domínio próprio oficial (<code>www.romodas.com.br</code>), o cadastro dos 20 produtos carro-chefe selecionados na loja hoje, os banners oficiais e as páginas institucionais — será realizada na <strong>próxima quarta-feira</strong>.
+        </div>
+
+        <!-- Os 3 Processos Operacionais -->
+        <div class="routine-cascade-container">
+          
+          <!-- Processo 1 -->
+          <div class="routine-channel-block">
+            <div class="routine-channel-title">
+              <span>Processo 1: Cadastro de Produtos com Padrão de Venda</span>
+              <span class="channel-time-tag">5 a 10 minutos por produto</span>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Título Otimizado para o Google (SEO):</strong> Seguir a fórmula <code>[Tipo da Peça] + [Modelagem] + [Tecido/Detalhe] — Rô Modas</code> (Ex: <em>Vestido Midi Canelado Manga Curta Casual — Rô Modas</em>).</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Grade de Variações e Preço:</strong> Cadastrar os tamanhos disponíveis (P, M, G / 36 ao 48), cores e o valor da peça (entre R$ 35 e R$ 150).</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Fotos e Tabela de Medidas:</strong> Inserir a foto no corpo (provador ou modelo IA), detalhes do tecido em plano fechado e a tabela de medidas em centímetros para evitar dúvidas e devoluções.</div>
+            </div>
+          </div>
+
+          <!-- Processo 2 -->
+          <div class="routine-channel-block">
+            <div class="routine-channel-title">
+              <span>Processo 2: Controle de Estoque Integrado (Loja Física x Site)</span>
+              <span class="channel-time-tag">Rotina diária rápida</span>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Baixa Imediata no Online (Manhã):</strong> Ao abrir o aplicativo da Nuvemshop às 09h e identificar um pedido pago, a funcionária vai direto à arara da loja e retira a peça física na mesma hora, guardando na bancada com o nome da cliente. Isso impede que outra pessoa compre a mesma peça no balcão.</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Ajuste do Balcão no Sistema (Fechamento):</strong> No fim da tarde (17h30), se alguma peça que também estava exposta no site foi vendida presencialmente na loja de Matão, basta dar baixa de 1 unidade no aplicativo da Nuvemshop para o estoque do site ficar 100% exato.</div>
+            </div>
+          </div>
+
+          <!-- Processo 3 -->
+          <div class="routine-channel-block">
+            <div class="routine-channel-title">
+              <span>Processo 3: Impressão da Etiqueta e Embalagem para Envio</span>
+              <span class="channel-time-tag">Despacho às 14h00</span>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Impressão sem Impressora Térmica Zebra:</strong> A loja utiliza a impressora comum de escritório com <strong>papel sulfite A4 comum</strong>. O processo é simples: gerar o PDF da etiqueta na Nuvemshop/Melhor Envio em folha A4, imprimir em <strong>Tamanho Real (100%)</strong> para não distorcer as barras, recortar na linha pontilhada e colar na embalagem cobrindo com <strong>fita adesiva transparente larga</strong> (que protege contra chuva e não rasga).</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Declaração de Conteúdo dos Correios:</strong> Assinar a folha de Declaração de Conteúdo gerada pelo sistema, dobrar e colar do lado de fora do pacote em um saquinho plástico protetor transparente (exigência dos Correios para encomendas sem Danfe).</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Embalagem com Carinho da Rô:</strong> Dobrar com papel de seda, borrifar o perfume característico da loja, colocar o cartão com o cupom de recompra e entregar ao motoboy ou levar à agência dos Correios.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="sub-heading">Central de Manuais & Playbooks Interativos</h3>
+        <p>Para abrir os manuais práticos completos com <strong>vídeos tutoriais do YouTube para assistir na tela</strong> e o passo a passo ilustrado com diagramação limpa, clique nos botões abaixo:</p>
+
+        <div class="playbook-links-grid">
+          <a href="playbook_nuvemshop.html" class="playbook-card-link">
+            <div class="playbook-card-title">📖 Manual de Operação da Nuvemshop</div>
+            <div class="playbook-card-desc">Os 3 processos da loja física: cadastro com SEO e print da tela real, estoque integrado e impressão A4 sem impressora Zebra.</div>
+          </a>
+          <a href="playbook_instagram.html" class="playbook-card-link">
+            <div class="playbook-card-title">📸 Criação de Conteúdo & Rotina de Provador</div>
+            <div class="playbook-card-desc">Metas diárias (3 Reels, 2 posts no feed, 3 Stories Look 24h), vídeos no provador da loja e tutorial em vídeo oficial.</div>
+          </a>
+          <a href="playbook_ia_moda.html" class="playbook-card-link">
+            <div class="playbook-card-title">🤖 Produção Visual de Moda com IA</div>
+            <div class="playbook-card-desc">Como transformar fotos no cabide em fotos com modelos brasileiras em alta definição via Higgsfield AI com tutorial.</div>
+          </a>
+          <a href="playbook_whatsapp.html" class="playbook-card-link">
+            <div class="playbook-card-title">💬 Comunidade VIP no WhatsApp</div>
+            <div class="playbook-card-desc">Rotina semanal de lançamentos, scripts prontos, regra dos links (produto vs. categoria) e vídeo tutorial.</div>
+          </a>
+          <a href="playbook_google_meu_negocio.html" class="playbook-card-link" style="grid-column: span 2;">
+            <div class="playbook-card-title">📍 Manual de Busca Local no Google Maps</div>
+            <div class="playbook-card-desc">Como colocar a loja física de Matão no topo das pesquisas locais, algoritmo de proximidade e roteiro para avaliações 5 estrelas.</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           7. WHATSAPP & COMUNIDADE VIP DE LANÇAMENTOS
+           ==================================================================== -->
+      <section id="whatsapp-grupo" class="doc-section">
+        <h2 class="section-heading">7. WhatsApp: O Fim das Taxas e a Criação da Comunidade VIP</h2>
+        <p>
+          A Meta passou a cobrar por mensagens de marketing em lista de transmissão, e muitas mensagens nem chegam porque as clientes não têm o número da loja salvo. Além disso, mandar dezenas de mensagens iguais causa bloqueio do chip da loja.
+        </p>
+
+        <h3 class="sub-heading">7.1. A Solução: Grupo Silencioso de Lançamentos VIP</h3>
+        <p>
+          Em vez de ficar caçando as pessoas no privado, criamos a <strong>Comunidade VIP no WhatsApp</strong>. Trata-se de um grupo onde apenas a Rô posta:
+        </p>
+        <ul>
+          <li><strong>Custo Zero:</strong> Não paga nada para a Meta;</li>
+          <li><strong>Mais de 80% de Abertura:</strong> As clientes entram por vontade própria porque querem ver as novidades antes de todo mundo;</li>
+          <li><strong>Dia do Lançamento:</strong> Toda quinta-feira às 19h, a equipe posta 5 fotos dos novos vestidos e calças com o link direto da Nuvemshop. As peças esgotam antes de irem para o feed público do Instagram.</li>
+        </ul>
+
+        <h3 class="sub-heading">7.2. Quando Usar Link de Produto vs. Link de Categoria no Grupo</h3>
+        <p>Para não confundir a cliente e maximizar a taxa de compra rápida no WhatsApp, a equipe deve seguir esta regra prática:</p>
+
+        <div class="image-grid-2" style="margin: 16px 0;">
+          <div class="image-frame" style="padding: 14px;">
+            <strong style="color: var(--text-title); font-size: 13.5px; display: block; margin-bottom: 6px;">🎯 Link Específico do Produto (Peça Única)</strong>
+            <p style="font-size: 12.8px; margin-bottom: 8px;"><strong>Quando usar:</strong> Quando a Rô posta a foto de um look ou peça específica na quinta-feira (ex: <em>"Vestido Midi Canelado Terracota"</em>).</p>
+            <p style="font-size: 12.8px; margin-bottom: 0; color: var(--text-secondary);"><strong>Por que:</strong> O link leva a cliente direto para a tela do vestido com o botão "Comprar Agora". A compra acontece em 1 clique, sem distrações. Ideal para peças com poucas unidades no estoque.</p>
+          </div>
+
+          <div class="image-frame" style="padding: 14px;">
+            <strong style="color: var(--text-title); font-size: 13.5px; display: block; margin-bottom: 6px;">📁 Link da Categoria / Coleção (Geral)</strong>
+            <p style="font-size: 12.8px; margin-bottom: 8px;"><strong>Quando usar:</strong> Quando anunciar a chegada de uma remessa inteira ou reposição (ex: <em>"Meninas, acabaram de chegar 15 calças jeans novas!"</em>).</p>
+            <p style="font-size: 12.8px; margin-bottom: 0; color: var(--text-secondary);"><strong>Por que:</strong> O link leva direto para a categoria inteira (<code>romodas.com.br/jeans</code>). A cliente entra e consegue navegar entre todas as modelagens, lavagens e tamanhos disponíveis.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           8. GOOGLE MEU NEGÓCIO: O MAPA DE MATÃO
+           ==================================================================== -->
+      <section id="google-maps" class="doc-section">
+        <h2 class="section-heading">8. Google Meu Negócio: Atraindo Clientes para a Loja Física</h2>
+        <p>
+          Quando uma mulher em Matão digita "loja de roupa feminina perto de mim", ela já está com a bolsa na mão querendo comprar. Quem aparece em primeiro lugar no Google Maps ganha a cliente.
+        </p>
+
+        <!-- Imagens Reais do Google Meu Negócio -->
+        <div class="image-showcase">
+          <div class="image-showcase-title">Transformação da Ficha no Google Maps</div>
+          <div class="image-grid-2">
+            
+            <div class="image-frame">
+              <img src="assets/google_meu_negocio_atual.png" alt="Google Meu Negócio Atual da Rô Modas">
+              <div class="image-caption">
+                <strong>Situação Atual (Não Reivindicado)</strong>
+                Aparece apenas a foto do carro do Google Street View da rua, sem número de telefone, sem site cadastrado e com zero avaliações no Google.
+              </div>
+            </div>
+
+            <div class="image-frame">
+              <img src="assets/google_meu_negocio_referencia.jpg" alt="Referência de Perfil Otimizado do Google">
+              <div class="image-caption">
+                <strong>Como Deve Ficar (Padrão de Excelência)</strong>
+                Nome com proposta de valor, carrossel de produtos com fotos em tons terrosos, botão direto para o site e WhatsApp, e centenas de avaliações 5 estrelas atestando a qualidade.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3 class="sub-heading">Os 3 Segredos do Algoritmo do Google</h3>
+        <ul>
+          <li><strong>Proximidade:</strong> O ponto na Avenida Quinze de Novembro, 2516, no Bairro Alto, tem excelente localização comercial em Matão;</li>
+          <li><strong>Relevância:</strong> O perfil precisa ter as categorias certas: <em>Loja de roupas femininas</em>, <em>Loja de jeans</em> e <em>Loja de roupas infantis</em>;</li>
+          <li><strong>Avaliações Frequentes:</strong> Pedir para as clientes fiéis da loja deixarem uma nota 5 estrelas toda semana faz o Google colocar a loja no topo do mapa.</li>
+        </ul>
+
+        <div style="margin-top: 20px;">
+          <a href="playbook_google_meu_negocio.html" class="playbook-card-link" style="display: block; max-width: 500px;">
+            <div class="playbook-card-title">📍 Abrir Manual Completo do Google Meu Negócio &rarr;</div>
+            <div class="playbook-card-desc">Veja o tutorial em vídeo, os 3 pilares do algoritmo local e os scripts para pedir avaliações 5 estrelas no balcão.</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           9. RECOMPRA & A TÉCNICA DO LOOK 24 HORAS
+           ==================================================================== -->
+      <section id="retencao-look" class="doc-section">
+        <h2 class="section-heading">9. O Segredo das Vendas nos Stories: A Técnica do Look 24 Horas</h2>
+        <p>
+          Esta é uma das técnicas de maior conversão imediata do varejo de moda digital: a estratégia do <strong>Look 24 Horas</strong>.
+        </p>
+
+        <div class="visual-box">
+          <div class="visual-box-title">Como Funciona a Estratégia do Look 24h</div>
+          <div class="pipeline-diagram">
+            <div class="pipeline-node">
+              Dona Rô veste o Look
+              <span>Vídeo natural no provador</span>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-node">
+              Cupom de 10% OFF
+              <span>Válido só por 24 horas</span>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-node">
+              Link Direto na Tela
+              <span>Leva para a Nuvemshop</span>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-node">
+              O Story sumiu?
+              <span>O desconto acabou!</span>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          <strong>Por que funciona tanto?</strong> Porque as pessoas têm mania de deixar para comprar depois. Quando a Rô avisa que o desconto só vale enquanto aquele Story estiver no ar, a cliente clica na hora e finaliza a compra no site para não perder a oportunidade.
+        </p>
+      </section>
+
+      <!-- ====================================================================
+           10. ROTINA OPERACIONAL DIÁRIA EM CASCATA
+           ==================================================================== -->
+      <section id="rotina-diaria" class="doc-section">
+        <h2 class="section-heading">10. Rotina Operacional Diária da Equipe (Em Cascata)</h2>
+        <p>
+          Esta não é uma lista de tarefas teóricas. É a rotina prática e simples do que a equipe da Rô Modas faz todos os dias nos três canais principais: <strong>Instagram</strong>, <strong>WhatsApp</strong> e <strong>E-commerce</strong>.
+        </p>
+
+        <div class="routine-cascade-container">
+          
+          <!-- Canal 1: Instagram (Criação de Conteúdo) -->
+          <div class="routine-channel-block">
+            <div class="routine-channel-title">
+              <span>Canal 1: Instagram — Produção de Conteúdo (@romodasmatao)</span>
+              <span class="channel-time-tag">Metas Diárias de Publicação</span>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>3 Stories Diários (Look 24h):</strong> Dona Rô grava os 3 Stories da manhã vestindo o look no provador, mostrando detalhes da costura e ativando a figurinha de link com o cupom <code>RO-OFF</code> exclusivo no site.</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>No Mínimo 3 Reels por Dia:</strong> Vídeos curtos e dinâmicos de produto (provador humanizado, formato "No Cabide x No Corpo" e "1 Peça, 3 Looks") para atração orgânica contínua de novas seguidoras.</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>No Mínimo 2 Posts Estáticos ou Carrossel no Feed:</strong> Fotos limpas e bem iluminadas da coleção com preços (R$ 35 a R$ 150), tamanhos e medidas na legenda para manter a vitrine sempre atualizada.</div>
+            </div>
+          </div>
+
+          <!-- Canal 2: WhatsApp (Comunidade VIP) -->
+          <div class="routine-channel-block">
+            <div class="routine-channel-title">
+              <span>Canal 2: WhatsApp & Comunidade VIP</span>
+              <span class="channel-time-tag">15 minutos por dia</span>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Diário:</strong> Atender dúvidas de clientes que chamam para saber sobre entregas e pagamentos.</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Toda Quinta-feira (19h00):</strong> Enviar o catálogo com as 5 fotos das peças que acabaram de chegar na loja com link exclusivo de compra.</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>Sexta-feira de Manhã:</strong> Confirmar os pedidos das clientes VIP que reservaram peças pelo grupo.</div>
+            </div>
+          </div>
+
+          <!-- Canal 3: E-commerce (Nuvemshop) -->
+          <div class="routine-channel-block">
+            <div class="routine-channel-title">
+              <span>Canal 3: E-commerce (Nuvemshop)</span>
+              <span class="channel-time-tag">25 minutos por dia</span>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>09h00 (Abertura):</strong> Abrir o aplicativo da Nuvemshop, verificar as compras aprovadas e tirar as peças das araras da loja física.</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>14h00 (Expedição):</strong> Borrifar o cheirinho da loja, colocar o cartão com o cupom de recompra, embalar e entregar para o motoboy ou levar aos Correios.</div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-bullet"></div>
+              <div><strong>17h30 (Fechamento):</strong> Ajustar no sistema as peças vendidas presencialmente no balcão da loja física para o estoque do site ficar 100% certo.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="insight-card">
+          <strong>Conclusão:</strong> Seguindo essa rotina simples e sem complicação, a Rô Modas mantém a loja física da Avenida Quinze de Novembro cheia de clientes e o e-commerce gerando vendas para todo o Brasil de forma contínua e lucrativa.
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <script>
+    // Atualização de Menu Ativo ao Rolar a Página
+    const sections = document.querySelectorAll('.doc-section');
+    const navItems = document.querySelectorAll('.nav-item');
+    const viewport = document.querySelector('.document-viewport');
+
+    viewport.addEventListener('scroll', () => {
+      let currentSectionId = '';
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 140 && rect.bottom >= 140) {
+          currentSectionId = section.getAttribute('id');
+        }
+      });
+
+      if (currentSectionId) {
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === '#' + currentSectionId) {
+            item.classList.add('active');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

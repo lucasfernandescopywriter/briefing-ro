@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual da Comunidade VIP no WhatsApp — Rô Modas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-workspace: #F6F6F4;
+      --bg-document: #FFFFFF;
+      --border-subtle: #E8E8E5;
+      --border-medium: #D1D1CC;
+      --text-title: #111111;
+      --text-body: #2B2B2B;
+      --text-secondary: #555552;
+      --text-muted: #80807B;
+      --accent-soft: #FAF9F7;
+      --accent-green: #0E6251;
+      --accent-green-bg: #E8F8F5;
+      --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background-color: var(--bg-workspace);
+      color: var(--text-body);
+      font-family: var(--font-stack);
+      font-size: 15px;
+      line-height: 1.75;
+      padding: 30px 16px 80px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .document-sheet {
+      width: 100%;
+      max-width: 860px;
+      background: var(--bg-document);
+      border: 1px solid var(--border-subtle);
+      padding: 48px 56px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .top-nav {
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      background: #F0F0EE;
+      transition: all 0.15s;
+    }
+
+    .back-btn:hover {
+      background: #E5E5E2;
+      color: var(--text-title);
+    }
+
+    .badge-category {
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 3px 8px;
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      border-radius: 3px;
+    }
+
+    h1.doc-title {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    h2.section-heading {
+      font-size: 18.5px;
+      font-weight: 600;
+      color: var(--text-title);
+      letter-spacing: -0.3px;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    h3.sub-heading {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-title);
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+
+    p { margin-bottom: 14px; font-size: 14.5px; }
+    ul, ol { margin: 10px 0 18px 20px; font-size: 14.5px; }
+    li { margin-bottom: 6px; }
+
+    /* Card de Vídeo com Player Embutido */
+    .video-block {
+      background: #FAFAFA;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 16px;
+      margin: 18px 0 24px 0;
+    }
+
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .video-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-title);
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid var(--border-medium);
+      background: #000;
+      margin-bottom: 10px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .video-btn {
+      color: #1A56DB;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .video-btn:hover { text-decoration: underline; }
+
+    .script-box {
+      background: #FAF9F7;
+      border-left: 3px solid #0E6251;
+      padding: 16px 18px;
+      margin: 14px 0;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .script-box strong { color: var(--text-title); }
+
+    .link-comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .link-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 16px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .document-sheet { padding: 28px 18px; }
+      .link-comparison-grid { grid-template-columns: 1fr; }
+      body { padding: 12px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="document-sheet">
+
+    <!-- Navegação Superior -->
+    <div class="top-nav">
+      <a href="apresentacao.html#whatsapp-grupo" class="back-btn">&larr; Voltar à Apresentação Principal</a>
+      <span class="badge-category">Manual Operacional &bull; WhatsApp VIP</span>
+    </div>
+
+    <h1 class="doc-title">Manual Operacional da Comunidade VIP no WhatsApp</h1>
+    <div class="doc-meta">
+      <strong>Canal:</strong> Grupo Silencioso de Lançamentos &bull; <strong>Custo Operacional:</strong> R$ 0,00 (Sem taxas da Meta)
+    </div>
+
+    <p>
+      Este manual reúne as regras, roteiros e a estratégia de links para a operação do <strong>Grupo VIP de Lançamentos da Rô Modas</strong> no WhatsApp. É o canal com maior taxa de conversão da empresa, pois fala diretamente com clientes que já conhecem e amam as roupas da loja.
+    </p>
+
+    <!-- ====================================================================
+         1. POR QUE O GRUPO SILENCIOSO
+         ==================================================================== -->
+    <h2 class="section-heading">1. Por que o Grupo Silencioso Substitui as Listas de Transmissão</h2>
+    <p>
+      As antigas listas de transmissão deixaram de funcionar porque a Meta não entrega as mensagens para quem não salvou o número da loja na agenda, além de cobrar tarifas por mensagens comerciais e bloquear números que disparam mensagens repetidas.
+    </p>
+
+    <ul>
+      <li><strong>Apenas Administradores Enviam Mensagens:</strong> O grupo fica silencioso durante a semana, evitando conversas paralelas, correntes e saída de clientes;</li>
+      <li><strong>Abertura Superior a 80%:</strong> As clientes entram voluntariamente porque querem ter acesso a novidades 24 horas antes do público geral;</li>
+      <li><strong>Custo Zero:</strong> Não gera nenhuma tarifa por envio.</li>
+    </ul>
+
+    <!-- Vídeo Embutido 1 -->
+    <div class="video-block">
+      <div class="video-header">
+        <span class="video-title">🎥 Vídeo Tutorial: Estratégia de Vendas e Criação de Grupo VIP no WhatsApp</span>
+        <span class="badge-category" style="background: #E8F8F5; color: #0E6251;">Vendas no WhatsApp</span>
+      </div>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/WUBekHVr40w" 
+          title="Estratégia de Vendas e Grupo VIP no WhatsApp" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-footer">
+        <span>Assista no player acima diretamente na página ou abra no YouTube oficial:</span>
+        <a href="https://www.youtube.com/watch?v=WUBekHVr40w" target="_blank" rel="noopener noreferrer" class="video-btn">
+          <span>▶ Assistir no YouTube Oficial</span> &nearr;
+        </a>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         2. A REGRA DE OURO DOS LINKS
+         ==================================================================== -->
+    <h2 class="section-heading">2. A Regra de Ouro dos Links: Produto Específico vs. Categoria</h2>
+    <p>
+      Para maximizar as vendas e não confundir a cliente, a equipe deve seguir estritamente este critério:
+    </p>
+
+    <div class="link-comparison-grid">
+      <div class="link-card" style="border-top: 3px solid #0E6251;">
+        <strong style="color: #0E6251; font-size: 14px; display: block; margin-bottom: 6px;">🎯 Link Específico do Produto (Peça Única)</strong>
+        <p style="font-size: 13px; margin-bottom: 8px;"><strong>Quando usar:</strong> Toda quinta-feira nos lançamentos, ao postar a foto de 1 look específico (ex: <em>Vestido Midi Terracota</em>).</p>
+        <p style="font-size: 13px; margin-bottom: 0; color: var(--text-secondary);"><strong>Por que:</strong> O link leva direto para a página com o botão <em>"Comprar Agora"</em>. A compra é feita em 1 clique, sem distrações. Ideal para peças com poucas unidades no estoque.</p>
+      </div>
+
+      <div class="link-card" style="border-top: 3px solid #1E242B;">
+        <strong style="color: #1E242B; font-size: 14px; display: block; margin-bottom: 6px;">📁 Link da Categoria / Coleção (Geral)</strong>
+        <p style="font-size: 13px; margin-bottom: 8px;"><strong>Quando usar:</strong> Quando anunciar a chegada de uma remessa grande (ex: <em>"Chegaram 15 novas calças jeans do 36 ao 48!"</em>).</p>
+        <p style="font-size: 13px; margin-bottom: 0; color: var(--text-secondary);"><strong>Por que:</strong> O link leva para a categoria inteira (<code>romodas.com.br/jeans</code>), permitindo que a cliente explore todas as opções, lavagens e tamanhos disponíveis.</p>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         3. SCRIPTS PRONTOS DE MENSAGENS
+         ==================================================================== -->
+    <h2 class="section-heading">3. Scripts Prontos para Copiar e Colar (Rotina Semanal)</h2>
+
+    <h3 class="sub-heading">Quarta-feira (18h00) — Mensagem de Aquecimento</h3>
+    <div class="script-box">
+      "Boa noite, meninas do nosso Clube VIP! ✨<br>
+      Passando para avisar que acabamos de receber a nova arara da semana aqui na loja física da 15 de Novembro!<br>
+      Amanhã (quinta-feira), pontualmente às 19h00, vou liberar as fotos das 5 peças mais perfeitas com os links exclusivos aqui no grupo.<br>
+      Lembrando: vocês têm 24h de exclusividade para garantir as suas peças antes de irem para o Instagram público. Fiquem atentas!"
+    </div>
+
+    <h3 class="sub-heading">Quinta-feira (19h00) — Lançamento com Link Direto</h3>
+    <div class="script-box">
+      "Peça 1 liberada! ✨<br>
+      Vestido Midi Canelado Terracota — caimento impecável que não marca nada no corpo!<br>
+      Tamanhos: P, M e G &bull; Valor: R$ 89,90 no Pix ou até 6x no cartão.<br>
+      Garanta o seu antes que esgote:<br>
+      🔗 [LINK DIRETO DA PEÇA NA NUVEMSHOP]<br>
+      (Frete grátis acima de R$ 119 ou Retirada na loja física no Bairro Alto)"
+    </div>
+
+    <h3 class="sub-heading">Sexta-feira (09h00) — Fechamento e Escassez</h3>
+    <div class="script-box">
+      "Meninas, bom dia! ☀️<br>
+      Restam apenas 3 unidades do Vestido Terracota e poucas calças jeans wide leg.<br>
+      Às 14h nós vamos liberar essas peças no feed do Instagram e nas araras da loja física. Se você estava namorando alguma, o momento de garantir é agora:<br>
+      🔗 [LINK DO CATÁLOGO DE NOVIDADES]"
+    </div>
+
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+      <a href="apresentacao.html#whatsapp-grupo" class="back-btn">&larr; Voltar à Apresentação Principal</a>
+      <span style="font-size: 12px; color: var(--text-muted);">Rô Modas &bull; Guia de Vendas no WhatsApp</span>
+    </div>
+
+  </article>
+
+</body>
+</html>
