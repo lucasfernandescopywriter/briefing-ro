@@ -38,7 +38,17 @@
       padding: 0;
     }
 
+    html {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
     body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
       background-color: var(--bg-app);
       color: var(--text-main);
       font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
@@ -207,13 +217,9 @@
       margin-top: 6px;
     }
 
-    /* Painel Minimalista */
+    /* Painel / Container de Bloco (Sem camadas aninhadas de card) */
     .panel {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 28px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     /* Grid de Imagens da Marca */
@@ -256,8 +262,7 @@
     }
 
     .logo-render-area {
-      background: #FAFAFA;
-      border: 1px solid var(--border-color);
+      background: var(--bg-subtle);
       border-radius: var(--radius-sm);
       padding: 36px 20px;
       text-align: center;
@@ -419,26 +424,32 @@
     }
 
     .highlight-item {
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      background: #FFFFFF;
+      padding: 8px 4px;
+      background: transparent;
+      border: none;
       text-align: center;
     }
 
     .highlight-icon-circle {
-      width: 38px;
-      height: 38px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      border: 1px solid var(--border-color);
+      border: 1.5px solid var(--border-color);
       margin: 0 auto 8px auto;
-      background: #FAFAFA;
+      background: var(--bg-subtle);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--text-secondary);
+      transition: all 0.15s ease;
+    }
+
+    .highlight-item:hover .highlight-icon-circle {
+      border-color: var(--accent-dark);
+      background: #FFFFFF;
+      transform: translateY(-2px);
     }
 
     .highlight-name {
@@ -574,7 +585,7 @@
     .info-callout {
       background: var(--bg-subtle);
       border-left: 3px solid var(--accent-dark);
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       margin-top: 12px;
       font-size: 0.82rem;
@@ -585,27 +596,44 @@
       color: var(--text-main);
     }
 
-    /* Tabela de Parametros */
+    /* Container de Tabela com Rolagem Suave no Mobile */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 14px;
+      margin-bottom: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: #FFFFFF;
+    }
+
     .data-table {
       width: 100%;
+      min-width: 580px;
       border-collapse: collapse;
-      margin-top: 12px;
       font-size: 0.82rem;
     }
 
     .data-table th {
       text-align: left;
-      padding: 8px 12px;
+      padding: 10px 14px;
       background: var(--bg-subtle);
       color: var(--text-main);
       font-weight: 600;
       border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
     }
 
     .data-table td {
-      padding: 8px 12px;
+      padding: 10px 14px;
       border-bottom: 1px solid var(--border-color);
       color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
     }
 
     /* Toast */
@@ -631,8 +659,13 @@
       transform: translateY(0);
     }
 
-    /* Responsivo */
+    /* Responsivo Mobile */
     @media (max-width: 900px) {
+      html, body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
       body {
         flex-direction: column;
       }
@@ -640,14 +673,47 @@
         width: 100%;
         position: relative;
         height: auto;
-        padding: 20px;
+        padding: 20px 16px;
       }
       .main-wrap {
         margin-left: 0;
-        padding: 24px 20px 80px;
+        width: 100%;
+        max-width: 100vw;
+        padding: 20px 16px 80px;
+        box-sizing: border-box;
+      }
+      .page-title {
+        font-size: 1.55rem;
+      }
+      .section-heading {
+        font-size: 1.25rem;
       }
       .brand-grid {
         grid-template-columns: 1fr;
+      }
+      .step-node {
+        padding: 16px;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .step-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .color-palette-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .prompt-card {
+        padding: 14px;
+      }
+      .prompt-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-action {
+        width: 100%;
+        justify-content: center;
       }
     }
 
@@ -688,14 +754,14 @@
       border: 0;
     }
 
-    /* Prompt de IA de Alta Conversao */
+    /* Prompt de IA de Alta Conversao (Card Único) */
     .prompt-card {
       background: #18181B;
-      border: 1px solid #27272A;
       border-radius: var(--radius-md);
-      padding: 22px 24px;
+      padding: 18px 20px;
       margin-top: 16px;
       color: #F4F4F5;
+      border: 1px solid #27272A;
     }
 
     .prompt-header {
@@ -708,10 +774,10 @@
     }
 
     .prompt-title {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       color: #D4D4D8;
       display: flex;
       align-items: center;
@@ -719,10 +785,9 @@
     }
 
     .prompt-content {
-      background: #09090B;
-      border: 1px solid #27272A;
-      border-radius: var(--radius-sm);
-      padding: 18px;
+      background: transparent;
+      border: none;
+      padding: 0;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       font-size: 0.84rem;
       line-height: 1.65;
@@ -734,10 +799,9 @@
     /* Callout Especial de Consultoria */
     .consulting-callout {
       background: #FAF6F0;
-      border: 1px solid #E8DFD5;
-      border-left: 4px solid #B8736B;
-      border-radius: var(--radius-sm);
-      padding: 16px 20px;
+      border-left: 3px solid #B8736B;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 14px 18px;
       margin-top: 14px;
       margin-bottom: 14px;
       font-size: 0.88rem;
@@ -976,7 +1040,7 @@
         </div>
 
         <!-- Paleta de Cores Oficial -->
-        <div style="margin-top:28px;">
+        <div class="logo-spec-box" style="margin-top:24px;">
           <div style="font-size:0.86rem; font-weight:700; color:var(--text-main); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
             Paleta de Cores Oficial
           </div>
@@ -1072,7 +1136,7 @@ romodas.lojavirtualnuvem.com.br</div>
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-top:20px;">
-          <div style="background:#FAFAFA; border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:14px;">
+          <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:14px;">
             <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px;">
               Endereço Comercial Cadastrado
             </div>
@@ -1081,7 +1145,7 @@ romodas.lojavirtualnuvem.com.br</div>
             </div>
           </div>
 
-          <div style="background:#FAFAFA; border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:14px;">
+          <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:14px;">
             <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px;">
               Link Principal da Bio
             </div>
@@ -1168,30 +1232,32 @@ romodas.lojavirtualnuvem.com.br</div>
             Se a equipe cadastrar um vestido com foto vertical alta (ex: 4:5) e logo ao lado cadastrar um cropped com foto quadrada em cabide (1:1), <strong>os cards da Nuvemshop ficam com alturas desiguais em forma de "degraus"</strong>. Isso quebra o alinhamento da vitrine, joga os preços e os botões "Comprar" para cima e para baixo e passa uma impressão imediata de amadorismo.
           </div>
 
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Formato da Foto</th>
-                <th>Proporção</th>
-                <th>Resolução Recomendada</th>
-                <th>Onde Usar / Regra de Aplicação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Vertical Editorial (Padrão Ouro Moda)</strong></td>
-                <td><code>4:5</code> ou <code>3:4</code></td>
-                <td><strong>1000 x 1250 px</strong> (ou 1000 x 1333 px)</td>
-                <td><strong>Recomendado para toda a Rô Modas.</strong> O corpo humano e as roupas são verticais. Valoriza vestidos, macacões e calças sem sobras vazias.</td>
-              </tr>
-              <tr>
-                <td><strong>Quadrado (Alternativo)</strong></td>
-                <td><code>1:1</code></td>
-                <td><strong>1000 x 1000 px</strong></td>
-                <td>Só utilize se <strong>100%</strong> das fotos da loja forem quadradas. Nunca misture fotos quadradas com verticais!</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Formato da Foto</th>
+                  <th>Proporção</th>
+                  <th>Resolução Recomendada</th>
+                  <th>Onde Usar / Regra de Aplicação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Vertical Editorial (Padrão Ouro Moda)</strong></td>
+                  <td><code>4:5</code> ou <code>3:4</code></td>
+                  <td><strong>1000 x 1250 px</strong> (ou 1000 x 1333 px)</td>
+                  <td><strong>Recomendado para toda a Rô Modas.</strong> O corpo humano e as roupas são verticais. Valoriza vestidos, macacões e calças sem sobras vazias.</td>
+                </tr>
+                <tr>
+                  <td><strong>Quadrado (Alternativo)</strong></td>
+                  <td><code>1:1</code></td>
+                  <td><strong>1000 x 1000 px</strong></td>
+                  <td>Só utilize se <strong>100%</strong> das fotos da loja forem quadradas. Nunca misture fotos quadradas com verticais!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <ul class="step-bullets" style="margin-top:14px;">
             <li><strong>Regra de Ouro da Vitrine:</strong> Todas as fotos de capa da loja devem ter rigorosamente a <strong>mesma proporção (1000 x 1250 px)</strong>.</li>
@@ -1288,32 +1354,34 @@ Mantenha o tom sofisticado, próximo, acolhedor e focado em segurança de compra
           <p class="step-body">
             Parâmetros de precificação no sistema Nuvemshop:
           </p>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Campo</th>
-                <th>Definição</th>
-                <th>Exemplo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Preço Original</td>
-                <td>Preço regular de venda na loja.</td>
-                <td>R$ 119,90</td>
-              </tr>
-              <tr>
-                <td>Preço Promocional</td>
-                <td>Preço com desconto. Aparece riscado na vitrine da loja.</td>
-                <td>R$ 89,90</td>
-              </tr>
-              <tr>
-                <td>Preço de Custo</td>
-                <td>Invisível para os clientes. Calcula a margem líquida no painel.</td>
-                <td>R$ 42,00</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Campo</th>
+                  <th>Definição</th>
+                  <th>Exemplo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Preço Original</td>
+                  <td>Preço regular de venda na loja.</td>
+                  <td>R$ 119,90</td>
+                </tr>
+                <tr>
+                  <td>Preço Promocional</td>
+                  <td>Preço com desconto. Aparece riscado na vitrine da loja.</td>
+                  <td>R$ 89,90</td>
+                </tr>
+                <tr>
+                  <td>Preço de Custo</td>
+                  <td>Invisível para os clientes. Calcula a margem líquida no painel.</td>
+                  <td>R$ 42,00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="step-node">
@@ -1346,42 +1414,44 @@ Mantenha o tom sofisticado, próximo, acolhedor e focado em segurança de compra
             Valores exatos e médios de mercado para o cálculo de frete pelas transportadoras integradas (Nuvem Envio, Correios, Jadlog e Melhor Envio). Considera a roupa dobrada dentro do envelope plástico de segurança inviolável da Rô Modas:
           </p>
 
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Categoria de Peça</th>
-                <th>Peso Médio Real</th>
-                <th>Dimensões do Pacote (C x L x A)</th>
-                <th>Embalagem Indicada</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Blusas, Regatas, Croppeds e T-Shirts</strong></td>
-                <td><code>0.200 kg</code> (200g)</td>
-                <td>26 cm x 20 cm x 3 cm</td>
-                <td>Envelope de Segurança Pequeno</td>
-              </tr>
-              <tr>
-                <td><strong>Vestidos Midi, Saias, Camisas e Calças Pantacourt</strong></td>
-                <td><code>0.350 kg</code> (350g)</td>
-                <td>30 cm x 22 cm x 4 cm</td>
-                <td>Envelope de Segurança Médio</td>
-              </tr>
-              <tr>
-                <td><strong>Vestidos Longos de Festa, Macacões e Blazers Alfaiataria</strong></td>
-                <td><code>0.500 kg</code> (500g)</td>
-                <td>32 cm x 24 cm x 5 cm</td>
-                <td>Envelope Médio ou Caixa Kraft</td>
-              </tr>
-              <tr>
-                <td><strong>Calças Jeans, Casacos, Tricôs e Conjuntos 2 Peças</strong></td>
-                <td><code>0.700 kg</code> (700g)</td>
-                <td>34 cm x 26 cm x 7 cm</td>
-                <td>Envelope Grande ou Caixa Kraft</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Categoria de Peça</th>
+                  <th>Peso Médio Real</th>
+                  <th>Dimensões do Pacote (C x L x A)</th>
+                  <th>Embalagem Indicada</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Blusas, Regatas, Croppeds e T-Shirts</strong></td>
+                  <td><code>0.200 kg</code> (200g)</td>
+                  <td>26 cm x 20 cm x 3 cm</td>
+                  <td>Envelope de Segurança Pequeno</td>
+                </tr>
+                <tr>
+                  <td><strong>Vestidos Midi, Saias, Camisas e Calças Pantacourt</strong></td>
+                  <td><code>0.350 kg</code> (350g)</td>
+                  <td>30 cm x 22 cm x 4 cm</td>
+                  <td>Envelope de Segurança Médio</td>
+                </tr>
+                <tr>
+                  <td><strong>Vestidos Longos de Festa, Macacões e Blazers Alfaiataria</strong></td>
+                  <td><code>0.500 kg</code> (500g)</td>
+                  <td>32 cm x 24 cm x 5 cm</td>
+                  <td>Envelope Médio ou Caixa Kraft</td>
+                </tr>
+                <tr>
+                  <td><strong>Calças Jeans, Casacos, Tricôs e Conjuntos 2 Peças</strong></td>
+                  <td><code>0.700 kg</code> (700g)</td>
+                  <td>34 cm x 26 cm x 7 cm</td>
+                  <td>Envelope Grande ou Caixa Kraft</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="consulting-callout" style="margin-top:16px;">
             <strong>Média Segura Rô Modas (Padrão para Cadastro Rápido):</strong> Se a vendedora estiver cadastrando com pressa ou sem balança na hora, preencha sempre com: <strong>Peso: <code>0.350</code> kg | Dimensões: <code>30</code> cm x <code>22</code> cm x <code>4</code> cm</strong>.<br>
@@ -2050,57 +2120,59 @@ Mantenha o tom sofisticado, próximo, acolhedor e focado em segurança de compra
             3. <strong>Posição de Novidades e Promoções:</strong> <em>Novidades</em> deve ser sempre o 1º item do menu (para quem visita com frequência) e <em>Promoções</em> deve ser o último item em destaque.
           </div>
 
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Categoria Principal (Menu)</th>
-                <th>Subcategorias Vinculadas</th>
-                <th>Organização no Painel Nuvemshop</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>1. ✦ Novidades</strong></td>
-                <td>Lançamentos da Semana, Alto Verão</td>
-                <td>1ª posição no menu para gerar compras por impulso.</td>
-              </tr>
-              <tr>
-                <td><strong>2. Vestidos</strong></td>
-                <td>Vestidos Midi, Vestidos Curtos, Vestidos Longos</td>
-                <td>Carro-chefe da boutique (maior tíquete e margem).</td>
-              </tr>
-              <tr>
-                <td><strong>3. Blusas & Croppeds</strong></td>
-                <td>Croppeds, T-Shirts, Camisas, Regatas</td>
-                <td>Peças de alto giro e compra casada com calças.</td>
-              </tr>
-              <tr>
-                <td><strong>4. Plus Size</strong></td>
-                <td>Vestidos Plus, Conjuntos Plus, Macacões</td>
-                <td>Destaque especial para atender o público com carinho e opções completas.</td>
-              </tr>
-              <tr>
-                <td><strong>5. Pijamas & Conforto</strong></td>
-                <td>Pijamas Femininos, Homewear</td>
-                <td>Excelente tíquete para presentes e compras afetivas.</td>
-              </tr>
-              <tr>
-                <td><strong>6. Infantil</strong></td>
-                <td>↳ <strong>Meninas</strong><br>↳ <strong>Meninos</strong></td>
-                <td><strong>Agrupamento inteligente:</strong> crie a categoria <em>Infantil</em> e arraste <em>Meninas</em> e <em>Meninos</em> para dentro dela como subcategorias!</td>
-              </tr>
-              <tr>
-                <td><strong>7. Marcas</strong></td>
-                <td>Marcas Parceiras / Confecção Própria</td>
-                <td>Menu de busca para quem procura etiquetas específicas.</td>
-              </tr>
-              <tr>
-                <td><strong>8. Promoções (Sale)</strong></td>
-                <td>Últimas Peças, Bazar</td>
-                <td>Última posição no menu, destacada em cor ou negrito para queima de estoque.</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Categoria Principal (Menu)</th>
+                  <th>Subcategorias Vinculadas</th>
+                  <th>Organização no Painel Nuvemshop</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. ✦ Novidades</strong></td>
+                  <td>Lançamentos da Semana, Alto Verão</td>
+                  <td>1ª posição no menu para gerar compras por impulso.</td>
+                </tr>
+                <tr>
+                  <td><strong>2. Vestidos</strong></td>
+                  <td>Vestidos Midi, Vestidos Curtos, Vestidos Longos</td>
+                  <td>Carro-chefe da boutique (maior tíquete e margem).</td>
+                </tr>
+                <tr>
+                  <td><strong>3. Blusas & Croppeds</strong></td>
+                  <td>Croppeds, T-Shirts, Camisas, Regatas</td>
+                  <td>Peças de alto giro e compra casada com calças.</td>
+                </tr>
+                <tr>
+                  <td><strong>4. Plus Size</strong></td>
+                  <td>Vestidos Plus, Conjuntos Plus, Macacões</td>
+                  <td>Destaque especial para atender o público com carinho e opções completas.</td>
+                </tr>
+                <tr>
+                  <td><strong>5. Pijamas & Conforto</strong></td>
+                  <td>Pijamas Femininos, Homewear</td>
+                  <td>Excelente tíquete para presentes e compras afetivas.</td>
+                </tr>
+                <tr>
+                  <td><strong>6. Infantil</strong></td>
+                  <td>↳ <strong>Meninas</strong><br>↳ <strong>Meninos</strong></td>
+                  <td><strong>Agrupamento inteligente:</strong> crie a categoria <em>Infantil</em> e arraste <em>Meninas</em> e <em>Meninos</em> para dentro dela como subcategorias!</td>
+                </tr>
+                <tr>
+                  <td><strong>7. Marcas</strong></td>
+                  <td>Marcas Parceiras / Confecção Própria</td>
+                  <td>Menu de busca para quem procura etiquetas específicas.</td>
+                </tr>
+                <tr>
+                  <td><strong>8. Promoções (Sale)</strong></td>
+                  <td>Últimas Peças, Bazar</td>
+                  <td>Última posição no menu, destacada em cor ou negrito para queima de estoque.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="step-node">
@@ -2164,7 +2236,7 @@ Mantenha o tom sofisticado, próximo, acolhedor e focado em segurança de compra
       </video>
 
       <!-- Painel: Onde a Rô Pode Fazer esse Processo -->
-      <div class="panel" style="margin-bottom:24px;">
+      <div class="step-node" style="margin-bottom:24px;">
         <div style="font-size:0.95rem; font-weight:700; color:var(--text-main); margin-bottom:8px;">
           ✦ Onde a Rô Pode Executar Esse Processo? (Você Decide!)
         </div>
@@ -2173,7 +2245,7 @@ Mantenha o tom sofisticado, próximo, acolhedor e focado em segurança de compra
         </p>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
-          <div style="background:#FAFAFA; border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px;">
+          <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:16px;">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
               <strong style="color:var(--text-main); font-size:0.92rem;">Opção 1: Google Flow</strong>
               <span class="faq-badge" style="background:#E0F2FE; color:#0369A1;">Já Utilizado pela Rô</span>
@@ -2183,7 +2255,7 @@ Mantenha o tom sofisticado, próximo, acolhedor e focado em segurança de compra
             </p>
           </div>
 
-          <div style="background:#FAFAFA; border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px;">
+          <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:16px;">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
               <strong style="color:var(--text-main); font-size:0.92rem;">Opção 2: Chat do Gemini Pro</strong>
               <span class="faq-badge" style="background:#DCFCE7; color:#15803D;">App & Web</span>
@@ -2254,14 +2326,14 @@ Mantenha o tom sofisticado, próximo, acolhedor e focado em segurança de compra
           </p>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:16px; margin-top:14px; margin-bottom:16px;">
-            <div style="border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px; background:#FAFAFA;">
+            <div style="border-left:3px solid #B8736B; background:var(--bg-subtle); border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:14px 16px;">
               <strong style="color:var(--text-main); font-size:0.9rem;">Método A: Modelo de Referência do Pinterest</strong>
               <p style="font-size:0.82rem; color:var(--text-secondary); margin-top:6px; line-height:1.5;">
                 A Rô escolhe uma foto de modelo que ama no Pinterest (pela pose, cabelo e elegância). Ela envia <strong>2 imagens</strong> para a IA: a roupa da Rô Modas + a foto da modelo do Pinterest. A IA transfere a roupa para a modelo mantendo a pose perfeita!
               </p>
             </div>
 
-            <div style="border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px; background:#FAFAFA;">
+            <div style="border-left:3px solid var(--accent-dark); background:var(--bg-subtle); border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:14px 16px;">
               <strong style="color:var(--text-main); font-size:0.9rem;">Método B: Geração de Modelo Realista 100% por IA</strong>
               <p style="font-size:0.82rem; color:var(--text-secondary); margin-top:6px; line-height:1.5;">
                 A Rô envia <strong>apenas a foto da roupa</strong> tirada no cabide ou manequim da loja e a IA cria do zero uma modelo brasileira autêntica, com textura de pele real, poros, cabelos naturais e expressão sofisticada de boutique.
