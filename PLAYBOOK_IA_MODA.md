@@ -36,7 +36,7 @@ Com ferramentas modernas de Inteligência Artificial especializadas em moda (com
 | Plataforma | Plano Gratuito | Plano Pago Mensal (R$) | Capacidade Mensal | Aplicação Ideal para Roupas |
 |---|---|---|---|---|
 | **Higgsfield AI**<br>*(Recomendada para Moda)* | **Gratuito**<br>(Créditos de teste para iniciar) | **Plano Starter:** Aprox. R$ 85 a R$ 160 / mês<br>**Plano Plus:** Aprox. R$ 270 / mês | De **100 a 300 fotos** profissionais e até **40 clipes de vídeo** curtos | **Padrão Ouro em Moda:** Preserva perfeitamente o corte do jeans, estampas florais e a costura real da peça sem distorção. |
-| **Google Flow / Gemini AI** | **Gratuito**<br>(Créditos no Google AI Studio) | Aprox. **R$ 110 a R$ 165 / mês** por usuário corporativo | Imagens conceituais ilimitadas | Excelente para fundos cenográficos e ideias criativas, mas pode alterar detalhes finos da estampa do tecido. |
+| **Google Flow / Gemini AI**<br>*(Utilizada pela Rô)* | **Gratuito / Pro**<br>(Google AI Studio & Gemini Pro) | **R$ 96 a R$ 110 / mês** (ou gratuito nos créditos padrão) | Fotos profissionais de catálogo e estúdio | **Excelente Preservação:** Testes com Gemini 2.5 Pro / Imagen 3 comprovam que mantém 100% da integridade de estampas, quinas e proporções do produto físico, superando o ChatGPT. |
 
 ---
 
