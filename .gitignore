@@ -1,7 +1,8 @@
-# Audio Media & Binary files
+# Audio Media & Binary files & Raw Oversized Source Videos
 *.wav
 *.bin
 whisper_bin/
+produtos tiktok shop.mp4
 
 # Temporary / Scratch Files
 scratch/
